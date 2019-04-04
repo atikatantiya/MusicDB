@@ -43,9 +43,9 @@ public class Home extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-				txtPassword = new JPasswordField();
-				txtPassword.setBounds(154, 105, 117, 19);
-				panel.add(txtPassword);
+		txtPassword = new JPasswordField();
+		txtPassword.setBounds(154, 105, 117, 19);
+		panel.add(txtPassword);
 
 		JLabel lblEmail = new JLabel("Email Id");
 		lblEmail.setHorizontalAlignment(SwingConstants.LEFT);
@@ -74,38 +74,32 @@ public class Home extends JFrame {
 				try {
 					String email = txtEmail.getText();
 					String password = String.valueOf(txtPassword.getPassword());
-
-					// Get driver class
+					
 					Class.forName("oracle.jdbc.driver.OracleDriver");
-
-					// step2 create the connection object
-					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM",
-							"atika123");
-
-					// create statement
+					
+					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM","atika123");
+					
 					Statement stmt = con.createStatement(
 						    ResultSet.TYPE_SCROLL_INSENSITIVE,
 						    ResultSet.CONCUR_READ_ONLY
 						);
 
-					ResultSet rs = stmt.executeQuery(
-							"SELECT * FROM users where email = '" + email + "' and password = '" + password + "'");
+					ResultSet rs = stmt.executeQuery("SELECT * FROM users where email = '" + email + "' and password = '" + password + "'");
+					
 					if (!rs.next()) {										
 						System.out.println("Incorrect credientials");
 					} else {
-						// reset to first row
+						
 						rs.beforeFirst();
-						while (rs.next()) {
-							//System.out.println("Not empty");
-							System.out.println(rs.getInt(1) + " " + rs.getString(2));
-							// lblData.setText(rs.getString("phone_num") + " " + rs.getString ("name"));
+						while (rs.next()) {							
+							System.out.println(rs.getInt(1) + " " + rs.getString(2));							
 						}
 					}
-
 					//con.commit();
 					con.close();
 
-				} catch (Exception e) {
+				} 
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 
