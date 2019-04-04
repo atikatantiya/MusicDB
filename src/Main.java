@@ -5,7 +5,7 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.event.*;
 
-public class Songs extends JFrame {
+public class Main extends JFrame {
 
 	private JPanel contentPane2;
 	private JTextField textField;
@@ -28,7 +28,7 @@ public class Songs extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Songs() {
+	public Main() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -52,11 +52,7 @@ public class Songs extends JFrame {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnCart = new JButton("Back");
-		btnCart.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		JButton btnCart = new JButton("Cart");
 		btnCart.setBounds(339, 227, 89, 23);
 		panel.add(btnCart);
 		
@@ -64,13 +60,25 @@ public class Songs extends JFrame {
 		btnLogout.setBounds(10, 227, 89, 23);
 		panel.add(btnLogout);
 		
+		JButton btnSongs = new JButton("Songs");
+		btnSongs.setBounds(339, 59, 89, 23);
+		panel.add(btnSongs);
+		
+		JButton btnArtists = new JButton("Artists");
+		btnArtists.setBounds(339, 93, 89, 23);
+		panel.add(btnArtists);
+		
+		JButton btnAlbums = new JButton("Albums");
+		btnAlbums.setBounds(339, 127, 89, 23);
+		panel.add(btnAlbums);
+		
+		JButton btnGenres = new JButton("Genres");
+		btnGenres.setBounds(339, 168, 89, 23);
+		panel.add(btnGenres);
+		
 		JLabel label = new JLabel("");
 		label.setBounds(10, 59, 318, 157);
 		panel.add(label);
-		
-		JLabel lblNewLabel = new JLabel("View More");
-		lblNewLabel.setBounds(338, 88, 90, 83);
-		panel.add(lblNewLabel);
 		
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

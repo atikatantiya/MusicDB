@@ -5,10 +5,10 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.event.*;
 
-public class Songs extends JFrame {
+public class Cart extends JFrame {
 
 	private JPanel contentPane2;
-	private JTextField textField;
+	private JTextField txtEnterNameOf;
 	/**
 	 * Launch the application.
 	 */
@@ -28,7 +28,7 @@ public class Songs extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Songs() {
+	public Cart() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -42,22 +42,17 @@ public class Songs extends JFrame {
 		contentPane2.add(panel);
 		panel.setLayout(null);						
 
-		JButton btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton("Delete from Cart");
 
-		btnSearch.setBounds(338, 11, 90, 25);
+		btnSearch.setBounds(315, 11, 113, 25);
 		panel.add(btnSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 13, 318, 20);
-		panel.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnCart = new JButton("Back");
+		JButton btnCart = new JButton("Continue Shopping");
 		btnCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCart.setBounds(339, 227, 89, 23);
+		btnCart.setBounds(305, 227, 123, 23);
 		panel.add(btnCart);
 		
 		JButton btnLogout = new JButton("Logout");
@@ -65,12 +60,14 @@ public class Songs extends JFrame {
 		panel.add(btnLogout);
 		
 		JLabel label = new JLabel("");
-		label.setBounds(10, 59, 318, 157);
+		label.setBounds(10, 59, 418, 157);
 		panel.add(label);
 		
-		JLabel lblNewLabel = new JLabel("View More");
-		lblNewLabel.setBounds(338, 88, 90, 83);
-		panel.add(lblNewLabel);
+		txtEnterNameOf = new JTextField();
+		txtEnterNameOf.setText("Enter name of song");
+		txtEnterNameOf.setBounds(10, 13, 295, 20);
+		panel.add(txtEnterNameOf);
+		txtEnterNameOf.setColumns(10);
 		
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

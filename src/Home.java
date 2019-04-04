@@ -92,14 +92,21 @@ public class Home extends JFrame {
 					} else {
 						
 						rs.beforeFirst();
-						while (rs.next()) {							
+						while (rs.next()) {	
+							System.out.println("Successfully logged in");
 							System.out.println(rs.getInt(1) + " " + rs.getString(2));
 							//lblData.setText(rs.getInt(1) + " " + rs.getString(2));
 						}
 					}
 					//con.commit();					
 					con.close();
-					Songs frame2 = new Songs();
+					//toast t = new toast("Logged in", 220, 330); 					  
+			       // t.showtoast();
+					
+					lblData.setText("Logged In");
+					Thread.sleep(1000);
+					
+					Main frame2 = new Main();
 					frame2.setVisible(true);
 					dispose();
 

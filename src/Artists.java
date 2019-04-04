@@ -5,7 +5,7 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.event.*;
 
-public class Songs extends JFrame {
+public class Artists extends JFrame {
 
 	private JPanel contentPane2;
 	private JTextField textField;
@@ -28,7 +28,7 @@ public class Songs extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Songs() {
+	public Artists() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
