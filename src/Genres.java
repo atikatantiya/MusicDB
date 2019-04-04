@@ -52,13 +52,13 @@ public class Genres extends JFrame {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnCart = new JButton("Back");
-		btnCart.addActionListener(new ActionListener() {
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCart.setBounds(339, 227, 89, 23);
-		panel.add(btnCart);
+		btnBack.setBounds(339, 227, 89, 23);
+		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(10, 227, 89, 23);
@@ -72,40 +72,12 @@ public class Genres extends JFrame {
 		lblNewLabel.setBounds(338, 88, 90, 83);
 		panel.add(lblNewLabel);
 		
-		btnSearch.addActionListener(new ActionListener() {
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
-
-					// Get driver class
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-
-					// step2 create the connection object
-					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM",
-							"atika123");
-
-					// create statement
-					Statement stmt = con.createStatement(
-						    ResultSet.TYPE_SCROLL_INSENSITIVE,
-						    ResultSet.CONCUR_READ_ONLY
-						);
-
-					ResultSet rs = stmt.executeQuery(
-							"SELECT * FROM song");
-					if (!rs.next()) {										
-						System.out.println("Incorrect credientials");
-					} else {
-						// reset to first row
-						rs.beforeFirst();
-						while (rs.next()) {
-							//System.out.println("Not empty");
-							System.out.println(rs.getInt(1) + " " + rs.getString(2));
-							// lblData.setText(rs.getString("phone_num") + " " + rs.getString ("name"));
-						}
-					}
-
-					//con.commit();
-					con.close();
+				try {				
+					Main frame2 = new Main();
+					frame2.setVisible(true);
+					dispose();					
 
 				} catch (Exception e) {
 					e.printStackTrace();

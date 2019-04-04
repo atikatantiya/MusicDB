@@ -96,6 +96,12 @@ public class Home extends JFrame {
 							System.out.println("Successfully logged in");
 							System.out.println(rs.getInt(1) + " " + rs.getString(2));
 							//lblData.setText(rs.getInt(1) + " " + rs.getString(2));
+							lblData.setText("Logged In");
+							Thread.sleep(1000);
+							
+							Main frame2 = new Main();
+							frame2.setVisible(true);
+							dispose();
 						}
 					}
 					//con.commit();					
@@ -103,12 +109,7 @@ public class Home extends JFrame {
 					//toast t = new toast("Logged in", 220, 330); 					  
 			       // t.showtoast();
 					
-					lblData.setText("Logged In");
-					Thread.sleep(1000);
 					
-					Main frame2 = new Main();
-					frame2.setVisible(true);
-					dispose();
 
 				} 
 				catch (Exception e) {

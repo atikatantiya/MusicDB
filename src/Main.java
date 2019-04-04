@@ -1,3 +1,4 @@
+
 import java.awt.EventQueue;
 import java.sql.*;
 import javax.swing.*;
@@ -16,8 +17,8 @@ public class Main extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
-					frame2.setVisible(true);
+					//Main frame2 = new Main();
+					//frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -80,40 +81,14 @@ public class Main extends JFrame {
 		label.setBounds(10, 59, 318, 157);
 		panel.add(label);
 		
-		btnSearch.addActionListener(new ActionListener() {
+		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					
-
-					// Get driver class
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-
-					// step2 create the connection object
-					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM",
-							"atika123");
-
-					// create statement
-					Statement stmt = con.createStatement(
-						    ResultSet.TYPE_SCROLL_INSENSITIVE,
-						    ResultSet.CONCUR_READ_ONLY
-						);
-
-					ResultSet rs = stmt.executeQuery(
-							"SELECT * FROM song");
-					if (!rs.next()) {										
-						System.out.println("Incorrect credientials");
-					} else {
-						// reset to first row
-						rs.beforeFirst();
-						while (rs.next()) {
-							//System.out.println("Not empty");
-							System.out.println(rs.getInt(1) + " " + rs.getString(2));
-							// lblData.setText(rs.getString("phone_num") + " " + rs.getString ("name"));
-						}
-					}
-
-					//con.commit();
-					con.close();
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+					
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -121,6 +96,71 @@ public class Main extends JFrame {
 
 			}
 		});
+		
+		btnSongs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Songs frame3 = new Songs();
+					frame3.setVisible(true);
+					dispose();
+					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		btnArtists.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Artists frame4 = new Artists();
+					frame4.setVisible(true);
+					dispose();
+					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		btnAlbums.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Albums frame5 = new Albums();
+					frame5.setVisible(true);
+					dispose();
+					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		btnGenres.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Genres frame6 = new Genres();
+					frame6.setVisible(true);
+					dispose();
+					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+
 
 	}
 }
