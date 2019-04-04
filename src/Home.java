@@ -39,7 +39,7 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(12, 24, 426, 271);
+		panel.setBounds(0, 0, 438, 261);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -69,6 +69,7 @@ public class Home extends JFrame {
 		JLabel lblData = new JLabel("");
 		lblData.setBounds(79, 214, 297, 25);
 		panel.add(lblData);
+		
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -92,7 +93,8 @@ public class Home extends JFrame {
 						
 						rs.beforeFirst();
 						while (rs.next()) {							
-							System.out.println(rs.getInt(1) + " " + rs.getString(2));							
+							System.out.println(rs.getInt(1) + " " + rs.getString(2));
+							//lblData.setText(rs.getInt(1) + " " + rs.getString(2));
 						}
 					}
 					//con.commit();					

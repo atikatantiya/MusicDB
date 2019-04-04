@@ -41,19 +41,14 @@ public class Songs extends JFrame {
 		contentPane2.add(panel);
 		panel.setLayout(null);		
 
-		JLabel lblEmail = new JLabel("Email Id");
-		lblEmail.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEmail.setBounds(154, 12, 158, 25);
-		panel.add(lblEmail);		
+				
 
-		JButton btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton("Search for songs");
 
 		btnSearch.setBounds(154, 171, 117, 25);
 		panel.add(btnSearch);
 
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(154, 76, 133, 17);
-		panel.add(lblPassword);
+		
 
 		JLabel lblData = new JLabel("");
 		lblData.setBounds(79, 214, 297, 25);
@@ -78,7 +73,7 @@ public class Songs extends JFrame {
 						);
 
 					ResultSet rs = stmt.executeQuery(
-							"SELECT * FROM users");
+							"SELECT * FROM song");
 					if (!rs.next()) {										
 						System.out.println("Incorrect credientials");
 					} else {
