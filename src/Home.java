@@ -1,16 +1,8 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 import java.sql.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
+import java.awt.event.*;
 
 public class Home extends JFrame {
 
