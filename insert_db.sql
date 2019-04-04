@@ -1,0 +1,73 @@
+insert into users values(1,'user1','user1@gmail.com','pass1');
+insert into users values(2,'user2','user2@gmail.com','pass2');
+insert into users values(3,'user3','user3@gmail.com','pass3');
+insert into users values(4,'user4','user4@gmail.com','pass4');
+insert into users values(5,'user5','user5@gmail.com','pass5');
+insert into users values(6,'user6','user6@gmail.com','pass6');
+
+insert into artist values(1,'artist1','This is the bio for artist 1.');
+insert into artist values(2,'artist2','This is the bio for artist 2.');
+insert into artist values(3,'artist3','This is the bio for artist 3.');
+insert into artist values(4,'artist4','This is the bio for artist 4.');
+insert into artist values(5,'artist5','This is the bio for artist 5.');
+
+insert into purchase values(1,1,to_date('01-01-2019','MM-DD-YYYY'),300);
+insert into purchase values(2,1,to_date('02-03-2018','MM-DD-YYYY'),400);
+insert into purchase values(3,2,to_date('03-01-2019','MM-DD-YYYY'),350);
+insert into purchase values(4,3,to_date('04-03-2018','MM-DD-YYYY'),200);
+insert into purchase values(5,3,to_date('05-01-2019','MM-DD-YYYY'),250);
+insert into purchase values(6,4,to_date('06-03-2018','MM-DD-YYYY'),300);
+insert into purchase values(7,5,to_date('07-01-2019','MM-DD-YYYY'),350);
+insert into purchase values(8,5,to_date('08-03-2018','MM-DD-YYYY'),400);
+insert into purchase values(9,6,to_date('09-01-2019','MM-DD-YYYY'),450);
+
+insert into album values(1,1,'album1',to_date('09-06-2019','MM-DD-YYYY'));
+insert into album values(2,1,'album2',to_date('08-01-2018','MM-DD-YYYY'));
+insert into album values(3,2,'album3',to_date('07-04-2019','MM-DD-YYYY'));
+insert into album values(4,3,'album4',to_date('06-01-2018','MM-DD-YYYY'));
+insert into album values(5,3,'album5',to_date('05-03-2019','MM-DD-YYYY'));
+insert into album values(6,4,'album6',to_date('04-01-2018','MM-DD-YYYY'));
+insert into album values(7,5,'album7',to_date('03-02-2019','MM-DD-YYYY'));
+insert into album values(8,5,'album8',to_date('02-01-2018','MM-DD-YYYY'));
+
+insert into genre values(1,'genre1');
+insert into genre values(2,'genre2');
+insert into genre values(3,'genre3');
+insert into genre values(4,'genre4');
+
+insert into song values(1,1,2,'song1',100);
+insert into song values(2,1,2,'song2',100);
+insert into song values(3,2,3,'song3',200);
+insert into song values(4,2,3,'song4',200);
+insert into song values(5,3,1,'song5',200);
+insert into song values(6,3,2,'song6',200);
+insert into song values(7,4,4,'song7',150);
+insert into song values(8,4,4,'song8',150);
+insert into song values(9,5,3,'song9',200);
+insert into song values(10,6,1,'song10',180);
+insert into song values(11,6,2,'song11',180);
+insert into song values(12,6,4,'song12',180);
+insert into song values(13,7,3,'song13',100);
+insert into song values(14,8,2,'song14',150);
+insert into song values(15,8,1,'song15',100);
+
+insert into purchased_item values(1,1,2);
+insert into purchased_item values(2,1,3);
+insert into purchased_item values(3,2,1);
+insert into purchased_item values(4,2,1);
+insert into purchased_item values(5,3,4);
+insert into purchased_item values(6,3,5);
+insert into purchased_item values(7,4,15);
+insert into purchased_item values(8,4,13);
+insert into purchased_item values(9,5,6);
+insert into purchased_item values(10,6,14);
+insert into purchased_item values(11,7,7);
+insert into purchased_item values(12,5,13);
+insert into purchased_item values(13,3,8);
+insert into purchased_item values(14,6,2);
+insert into purchased_item values(15,1,9);
+insert into purchased_item values(16,9,11);
+insert into purchased_item values(17,7,10);
+insert into purchased_item values(18,8,11);
+insert into purchased_item values(19,8,15);
+insert into purchased_item values(20,9,12);
