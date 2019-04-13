@@ -16,8 +16,8 @@ public class Genres extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
-					frame2.setVisible(true);
+					Genres frame6 = new Genres();
+					frame6.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

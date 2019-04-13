@@ -16,8 +16,8 @@ public class Albums extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
-					frame2.setVisible(true);
+					Albums frame5 = new Albums();
+					frame5.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

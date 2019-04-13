@@ -15,8 +15,8 @@ public class ArtistbyId extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
-					frame2.setVisible(true);
+					//Main frame2 = new Main();
+					//frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -1,24 +1,22 @@
-
 import java.awt.EventQueue;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.event.*;
+import java.awt.List;
 
 public class Main extends JFrame {
 
 	private JPanel contentPane2;
-	private JTextField textField;
-	/**
-	 * Launch the application.
-	 */
+	private JTextField txtEnter;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//Main frame2 = new Main();
-					//frame2.setVisible(true);
+					Main frame2 = new Main();
+					frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -26,9 +24,6 @@ public class Main extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Main() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,10 +43,11 @@ public class Main extends JFrame {
 		btnSearch.setBounds(338, 11, 90, 25);
 		panel.add(btnSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 13, 318, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtEnter = new JTextField();
+		txtEnter.setText("Search for a song, album or artist");
+		txtEnter.setBounds(10, 13, 318, 20);
+		panel.add(txtEnter);
+		txtEnter.setColumns(10);
 		
 		JButton btnCart = new JButton("Cart");
 		btnCart.setBounds(339, 227, 89, 23);
@@ -77,9 +73,9 @@ public class Main extends JFrame {
 		btnGenres.setBounds(339, 168, 89, 23);
 		panel.add(btnGenres);
 		
-		JLabel label = new JLabel("");
-		label.setBounds(10, 59, 318, 157);
-		panel.add(label);
+		JLabel lblNewLabel = new JLabel("Here are some song recommendations for you");
+		lblNewLabel.setBounds(10, 48, 318, 14);
+		panel.add(lblNewLabel);
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -160,7 +156,21 @@ public class Main extends JFrame {
 
 			}
 		});
+		
+		btnCart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Cart frame7 = new Cart();
+					frame7.setVisible(true);
+					dispose();
+					
 
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
+			}
+		});
 	}
 }

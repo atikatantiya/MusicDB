@@ -16,8 +16,8 @@ public class Cart extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
-					frame2.setVisible(true);
+					//Main frame2 = new Main();
+					//frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,18 +42,18 @@ public class Cart extends JFrame {
 		contentPane2.add(panel);
 		panel.setLayout(null);						
 
-		JButton btnSearch = new JButton("Delete from Cart");
+		JButton btnDelete = new JButton("Delete from Cart");
 
-		btnSearch.setBounds(315, 11, 113, 25);
-		panel.add(btnSearch);
+		btnDelete.setBounds(315, 11, 113, 25);
+		panel.add(btnDelete);
 		
-		JButton btnCart = new JButton("Continue Shopping");
-		btnCart.addActionListener(new ActionListener() {
+		JButton btnHome = new JButton("Continue Shopping");
+		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCart.setBounds(305, 227, 123, 23);
-		panel.add(btnCart);
+		btnHome.setBounds(305, 227, 123, 23);
+		panel.add(btnHome);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(10, 227, 89, 23);
@@ -69,40 +69,28 @@ public class Cart extends JFrame {
 		panel.add(txtEnterNameOf);
 		txtEnterNameOf.setColumns(10);
 		
-		btnSearch.addActionListener(new ActionListener() {
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {				
+					Main frame2 = new Main();
+					frame2.setVisible(true);
+					dispose();					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					
-
-					// Get driver class
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-
-					// step2 create the connection object
-					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM",
-							"atika123");
-
-					// create statement
-					Statement stmt = con.createStatement(
-						    ResultSet.TYPE_SCROLL_INSENSITIVE,
-						    ResultSet.CONCUR_READ_ONLY
-						);
-
-					ResultSet rs = stmt.executeQuery(
-							"SELECT * FROM song");
-					if (!rs.next()) {										
-						System.out.println("Incorrect credientials");
-					} else {
-						// reset to first row
-						rs.beforeFirst();
-						while (rs.next()) {
-							//System.out.println("Not empty");
-							System.out.println(rs.getInt(1) + " " + rs.getString(2));
-							// lblData.setText(rs.getString("phone_num") + " " + rs.getString ("name"));
-						}
-					}
-
-					//con.commit();
-					con.close();
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+					
 
 				} catch (Exception e) {
 					e.printStackTrace();

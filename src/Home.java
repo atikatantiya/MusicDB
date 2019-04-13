@@ -44,7 +44,7 @@ public class Home extends JFrame {
 		panel.setLayout(null);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(154, 105, 117, 19);
+		txtPassword.setBounds(154, 113, 117, 20);
 		panel.add(txtPassword);
 
 		JLabel lblEmail = new JLabel("Email Id");
@@ -53,7 +53,7 @@ public class Home extends JFrame {
 		panel.add(lblEmail);
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(154, 49, 114, 19);
+		txtEmail.setBounds(154, 49, 117, 20);
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 
@@ -63,7 +63,7 @@ public class Home extends JFrame {
 		panel.add(btnSearch);
 
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(154, 76, 133, 17);
+		lblPassword.setBounds(154, 85, 133, 17);
 		panel.add(lblPassword);
 
 		JLabel lblData = new JLabel("");
@@ -95,9 +95,8 @@ public class Home extends JFrame {
 						while (rs.next()) {	
 							System.out.println("Successfully logged in");
 							System.out.println(rs.getInt(1) + " " + rs.getString(2));
-							//lblData.setText(rs.getInt(1) + " " + rs.getString(2));
-							lblData.setText("Logged In");
-							Thread.sleep(1000);
+							//lblData.setText("Logged In");
+							//Thread.sleep(1000);
 							
 							Main frame2 = new Main();
 							frame2.setVisible(true);
@@ -106,11 +105,6 @@ public class Home extends JFrame {
 					}
 					//con.commit();					
 					con.close();
-					//toast t = new toast("Logged in", 220, 330); 					  
-			       // t.showtoast();
-					
-					
-
 				} 
 				catch (Exception e) {
 					e.printStackTrace();

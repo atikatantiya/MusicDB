@@ -16,8 +16,8 @@ public class Artists extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
-					frame2.setVisible(true);
+					Artists frame4 = new Artists();
+					frame4.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

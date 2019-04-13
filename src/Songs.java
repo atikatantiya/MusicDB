@@ -8,7 +8,7 @@ import java.awt.event.*;
 public class Songs extends JFrame {
 
 	private JPanel contentPane2;
-	private JTextField textField;
+	private JTextField txtEnterSongTo;
 	/**
 	 * Launch the application.
 	 */
@@ -16,8 +16,8 @@ public class Songs extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
-					frame2.setVisible(true);
+					Songs frame3 = new Songs();
+					frame3.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,10 +47,11 @@ public class Songs extends JFrame {
 		btnSearch.setBounds(338, 11, 90, 25);
 		panel.add(btnSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 13, 318, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtEnterSongTo = new JTextField();
+		txtEnterSongTo.setText("Enter song to search for");
+		txtEnterSongTo.setBounds(10, 13, 318, 20);
+		panel.add(txtEnterSongTo);
+		txtEnterSongTo.setColumns(10);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -68,9 +69,13 @@ public class Songs extends JFrame {
 		label.setBounds(10, 59, 318, 157);
 		panel.add(label);
 		
-		JLabel lblNewLabel = new JLabel("View More");
-		lblNewLabel.setBounds(338, 88, 90, 83);
-		panel.add(lblNewLabel);
+		JLabel lblClickOnThe = new JLabel("Click on the song");
+		lblClickOnThe.setBounds(338, 88, 90, 14);
+		panel.add(lblClickOnThe);
+		
+		JLabel lblToKnowMore = new JLabel("to know more");
+		lblToKnowMore.setBounds(338, 105, 65, 14);
+		panel.add(lblToKnowMore);
 		
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -85,5 +90,23 @@ public class Songs extends JFrame {
 
 			}
 		});
+		
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		
 	}
 }
