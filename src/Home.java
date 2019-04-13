@@ -24,6 +24,7 @@ public class Home extends JFrame {
 	}
 
 	public Home() {
+		setTitle("Login Page");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 450, 300);

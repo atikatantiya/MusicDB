@@ -24,6 +24,7 @@ public class Artists extends JFrame {
 	}
 
 	public Artists() {
+		setTitle("Artists");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 450, 300);

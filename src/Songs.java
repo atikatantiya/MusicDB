@@ -23,6 +23,7 @@ public class Songs extends JFrame {
 	}
 
 	public Songs() {
+		setTitle("Songs");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 450, 300);
@@ -59,17 +60,17 @@ public class Songs extends JFrame {
 		btnLogout.setBounds(10, 227, 89, 23);
 		panel.add(btnLogout);
 		
-		JLabel lblClickOnThe = new JLabel("  Click on the ");
-		lblClickOnThe.setBounds(338, 88, 90, 14);
-		panel.add(lblClickOnThe);
+		JLabel lblClick = new JLabel("  Click on the ");
+		lblClick.setBounds(338, 88, 90, 14);
+		panel.add(lblClick);		
 		
-		JLabel lblToKnowMore = new JLabel("  song to ");
-		lblToKnowMore.setBounds(338, 105, 65, 14);
-		panel.add(lblToKnowMore);	
+		JLabel lblSong = new JLabel("  song to ");
+		lblSong.setBounds(338, 105, 65, 14);
+		panel.add(lblSong);	
 		
-		JLabel lblNewLabel = new JLabel("  know more");
-		lblNewLabel.setBounds(338, 124, 90, 14);
-		panel.add(lblNewLabel);
+		JLabel lblKnowMore = new JLabel("  know more");
+		lblKnowMore.setBounds(338, 124, 90, 14);
+		panel.add(lblKnowMore);
 		
 		DefaultListModel<String> songlist = new DefaultListModel<>(); 
 		try {
@@ -111,7 +112,7 @@ public class Songs extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            SongbyId frame8 = new SongbyId(o.toString());
+		            SongbyId frame8 = new SongbyId(o.toString(),1,"null","null");
 					frame8.setVisible(true);
 					dispose();
 		          }
@@ -201,7 +202,7 @@ public class Songs extends JFrame {
 						          int index = theList2.locationToIndex(mouseEvent.getPoint());
 						          if (index >= 0) {
 						            Object o = theList2.getModel().getElementAt(index);
-						            SongbyId frame8 = new SongbyId(o.toString());
+						            SongbyId frame8 = new SongbyId(o.toString(),1,"null","null");
 									frame8.setVisible(true);
 									dispose();
 						          }

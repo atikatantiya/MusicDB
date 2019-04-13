@@ -24,6 +24,7 @@ public class Albums extends JFrame {
 	}
 	
 	public Albums() {
+		setTitle("Albums");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 450, 300);
@@ -104,7 +105,7 @@ public class Albums extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            AlbumbyId frame10 = new AlbumbyId(o.toString());
+		            AlbumbyId frame10 = new AlbumbyId(o.toString(),1,"null");
 					frame10.setVisible(true);
 					dispose();
 		          }
@@ -194,7 +195,7 @@ public class Albums extends JFrame {
 						          int index = theList2.locationToIndex(mouseEvent.getPoint());
 						          if (index >= 0) {
 						            Object o = theList2.getModel().getElementAt(index);
-						            AlbumbyId frame10 = new AlbumbyId(o.toString());
+						            AlbumbyId frame10 = new AlbumbyId(o.toString(),1,"null");
 									frame10.setVisible(true);
 									dispose();
 						          }

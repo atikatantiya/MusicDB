@@ -4,11 +4,10 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.event.*;
-//Origin - Artist by Id
-//On click leads to - Album by Id
-//select alb_name from album,artist where album.artist_id = artist.artist_id and artist.art_name='artist1';
-
-public class AlbumsbyArtist extends JFrame {
+//Origin - Album by Id
+//On click leads to - Song by Id
+//select song.s_name from song,album where album.alb_name = 'album1' and album.album_id = song.album_id;
+public class SongsbyAlbum extends JFrame {
 
 	private JPanel contentPane2;
 	
@@ -16,8 +15,8 @@ public class AlbumsbyArtist extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlbumsbyArtist frame13 = new AlbumsbyArtist("artist1");
-					frame13.setVisible(true);
+					SongsbyAlbum frame14 = new SongsbyAlbum("album1",1,"null");
+					frame14.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -25,8 +24,8 @@ public class AlbumsbyArtist extends JFrame {
 		});
 	}
 
-	public AlbumsbyArtist(String art) {
-		setTitle("Albums by the Artist");
+	public SongsbyAlbum(String alb,int ch,String art) {
+		setTitle("Songs in the Album");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 450, 300);
@@ -52,21 +51,17 @@ public class AlbumsbyArtist extends JFrame {
 		btnLogout.setBounds(10, 227, 89, 23);
 		panel.add(btnLogout);
 		
-		JLabel label = new JLabel("  Click on the ");
-		label.setBounds(338, 91, 90, 14);
-		panel.add(label);
+		JLabel namel = new JLabel("");
+		namel.setBounds(10, 32, 290, 45);
+		panel.add(namel);
 		
-		JLabel label_1 = new JLabel("  album to ");
-		label_1.setBounds(338, 108, 65, 14);
-		panel.add(label_1);
+		JLabel lblViewMore = new JLabel("View More");
+		lblViewMore.setBounds(357, 32, 71, 39);
+		panel.add(lblViewMore);
 		
-		JLabel label_2 = new JLabel("  know more");
-		label_2.setBounds(338, 127, 90, 14);
-		panel.add(label_2);
-		
-		DefaultListModel<String> alblist = new DefaultListModel<>(); 
+		DefaultListModel<String> songlist = new DefaultListModel<>(); 
 		try {
-			alblist.clear();
+			songlist.clear();
 			Class.forName("oracle.jdbc.driver.OracleDriver");					
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM","atika123");
 			
@@ -75,7 +70,7 @@ public class AlbumsbyArtist extends JFrame {
 				    ResultSet.CONCUR_READ_ONLY
 				);
 
-			ResultSet rs = stmt.executeQuery("SELECT alb_name FROM album,artist WHERE album.artist_id = artist.artist_id AND artist.art_name='" + art + "'");
+			ResultSet rs = stmt.executeQuery("SELECT song.s_name FROM song,album WHERE album.alb_name = '" + alb + "' AND album.album_id = song.album_id");
 			
 			if (!rs.next()) {										
 				System.out.println("System error");
@@ -83,7 +78,7 @@ public class AlbumsbyArtist extends JFrame {
 				
 				rs.beforeFirst();
 				while (rs.next()) {	
-					alblist.addElement(rs.getString(1)); 
+					songlist.addElement(rs.getString(1)); 
 				}
 			}					
 			con.close();
@@ -92,7 +87,7 @@ public class AlbumsbyArtist extends JFrame {
 			e.printStackTrace();
 		}		
 		 
-        JList<String> list = new JList<>(alblist);
+        JList<String> list = new JList<>(songlist);
         list.setBounds(10, 54, 318, 162);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
@@ -104,8 +99,8 @@ public class AlbumsbyArtist extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            AlbumbyId frame10 = new AlbumbyId(o.toString(),2,art);
-					frame10.setVisible(true);
+		            SongbyId frame8 = new SongbyId(o.toString(),3,alb,art);
+					frame8.setVisible(true);
 					dispose();
 		          }
 		        }
@@ -131,9 +126,16 @@ public class AlbumsbyArtist extends JFrame {
 		
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {					
-					ArtistbyId frame9 = new ArtistbyId(art);
-					frame9.setVisible(true);
+				try {
+					if(ch==1) {
+						AlbumbyId frame10 = new AlbumbyId(alb,1,"null");
+						frame10.setVisible(true);
+					}
+					else if(ch==2){
+						AlbumbyId frame10 = new AlbumbyId(alb,2,art);
+						frame10.setVisible(true);
+					}
+					
 					dispose();
 				} catch (Exception e) {
 					e.printStackTrace();

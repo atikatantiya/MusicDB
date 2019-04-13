@@ -24,6 +24,7 @@ public class Cart extends JFrame {
 	}
 
 	public Cart() {
+		setTitle("Cart");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 450, 300);
