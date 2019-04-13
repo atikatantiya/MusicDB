@@ -10,15 +10,13 @@ import java.awt.event.*;
 public class GenrebyId extends JFrame {
 
 	private JPanel contentPane2;
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//Main frame2 = new Main();
-					//frame2.setVisible(true);
+					 GenrebyId frame11 = new GenrebyId("genre1");
+						frame11.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -26,13 +24,10 @@ public class GenrebyId extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public GenrebyId() {
+	public GenrebyId(String s) {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
@@ -43,13 +38,13 @@ public class GenrebyId extends JFrame {
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
-		JButton btnCart = new JButton("Back");
-		btnCart.addActionListener(new ActionListener() {
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCart.setBounds(339, 227, 89, 23);
-		panel.add(btnCart);
+		btnBack.setBounds(339, 227, 89, 23);
+		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(10, 227, 89, 23);
@@ -58,6 +53,30 @@ public class GenrebyId extends JFrame {
 		JLabel songs = new JLabel("");
 		songs.setBounds(10, 11, 318, 205);
 		panel.add(songs);
+		
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Genres frame6 = new Genres();
+					frame6.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 	}
 }

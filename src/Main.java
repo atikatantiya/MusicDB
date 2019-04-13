@@ -92,12 +92,10 @@ public class Main extends JFrame {
 		
 		btnSongs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
+				try {					
 					Songs frame3 = new Songs();
 					frame3.setVisible(true);
-					dispose();
-					
+					dispose();					
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -108,65 +106,49 @@ public class Main extends JFrame {
 		
 		btnArtists.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
+				try {					
 					Artists frame4 = new Artists();
 					frame4.setVisible(true);
-					dispose();
-					
-
+					dispose();					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 		
 		btnAlbums.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
+				try {					
 					Albums frame5 = new Albums();
 					frame5.setVisible(true);
 					dispose();
-					
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 		
 		btnGenres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
+				try {				
 					Genres frame6 = new Genres();
 					frame6.setVisible(true);
 					dispose();
-					
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 		
 		btnCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
+				try {					
 					Cart frame7 = new Cart();
 					frame7.setVisible(true);
 					dispose();
-					
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 	}

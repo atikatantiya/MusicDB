@@ -8,15 +8,13 @@ import java.awt.event.*;
 public class AlbumbyId extends JFrame {
 
 	private JPanel contentPane2;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//Main frame2 = new Main();
-					//frame2.setVisible(true);
+					 AlbumbyId frame10 = new AlbumbyId("album1");
+						frame10.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -24,13 +22,10 @@ public class AlbumbyId extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public AlbumbyId() {
+	public AlbumbyId(String s) {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
@@ -41,13 +36,13 @@ public class AlbumbyId extends JFrame {
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
-		JButton btnCart = new JButton("Back");
-		btnCart.addActionListener(new ActionListener() {
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCart.setBounds(339, 227, 89, 23);
-		panel.add(btnCart);
+		btnBack.setBounds(339, 227, 89, 23);
+		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(10, 227, 89, 23);
@@ -68,6 +63,30 @@ public class AlbumbyId extends JFrame {
 		JLabel releasel = new JLabel("");
 		releasel.setBounds(10, 149, 318, 35);
 		panel.add(releasel);
+		
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Albums frame5 = new Albums();
+					frame5.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 	}
 }

@@ -8,15 +8,13 @@ import java.awt.event.*;
 public class ArtistbyId extends JFrame {
 
 	private JPanel contentPane2;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//Main frame2 = new Main();
-					//frame2.setVisible(true);
+					ArtistbyId frame9 = new ArtistbyId("artist1");
+					frame9.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -24,13 +22,10 @@ public class ArtistbyId extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ArtistbyId() {
+	public ArtistbyId(String s) {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
@@ -41,13 +36,13 @@ public class ArtistbyId extends JFrame {
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
-		JButton btnCart = new JButton("Back");
-		btnCart.addActionListener(new ActionListener() {
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCart.setBounds(339, 227, 89, 23);
-		panel.add(btnCart);
+		btnBack.setBounds(339, 227, 89, 23);
+		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(10, 227, 89, 23);
@@ -66,7 +61,7 @@ public class ArtistbyId extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSongs.setBounds(339, 29, 89, 23);
+		btnSongs.setBounds(326, 29, 102, 23);
 		panel.add(btnSongs);
 		
 		JButton btnAlbums = new JButton("List Albums");
@@ -74,8 +69,53 @@ public class ArtistbyId extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAlbums.setBounds(339, 118, 89, 23);
+		btnAlbums.setBounds(326, 118, 102, 23);
 		panel.add(btnAlbums);
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Artists frame4 = new Artists();
+					frame4.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btnSongs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btnAlbums.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		System.out.println(s);
 
 	}
 }
