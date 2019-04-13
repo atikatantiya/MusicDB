@@ -8,7 +8,7 @@ import java.awt.event.*;
 public class Genres extends JFrame {
 
 	private JPanel contentPane2;
-	private JTextField textField;
+	private JTextField txtGenre;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,10 +42,11 @@ public class Genres extends JFrame {
 		btnSearch.setBounds(338, 11, 90, 25);
 		panel.add(btnSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 13, 318, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtGenre = new JTextField();
+		txtGenre.setText("Enter genre to search for");
+		txtGenre.setBounds(10, 13, 318, 20);
+		panel.add(txtGenre);
+		txtGenre.setColumns(10);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -62,10 +63,6 @@ public class Genres extends JFrame {
 		JLabel label = new JLabel("");
 		label.setBounds(10, 59, 318, 157);
 		panel.add(label);
-		
-		JLabel lblNewLabel = new JLabel("View More");
-		lblNewLabel.setBounds(338, 88, 90, 83);
-		panel.add(lblNewLabel);
 		
 		DefaultListModel<String> genlist = new DefaultListModel<>(); 
 		try {
@@ -86,7 +83,6 @@ public class Genres extends JFrame {
 				
 				rs.beforeFirst();
 				while (rs.next()) {	
-					//System.out.println(rs.getString(1));
 					genlist.addElement(rs.getString(1)); 
 				}
 			}					
@@ -108,7 +104,6 @@ public class Genres extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            //System.out.println("Double-clicked on: " + o.toString());
 		            GenrebyId frame11 = new GenrebyId(o.toString());
 					frame11.setVisible(true);
 					dispose();
@@ -132,18 +127,7 @@ public class Genres extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
-		
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {				
-					
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		});	
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -157,5 +141,90 @@ public class Genres extends JFrame {
 				}
 			}
 		});
+		
+		DefaultListModel<String> searchlist = new DefaultListModel<>();
+		JList<String> list2 = new JList<>(searchlist);
+        list2.setBounds(10, 46, 318, 162);
+        list2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		panel.add(list2);
+		list2.setVisible(false);
+		
+		JScrollPane scrollPane2 = new JScrollPane(list2);
+		scrollPane2.setBounds(10, 45, 318, 168);
+		panel.add(scrollPane2);
+		
+		JLabel label_1 = new JLabel("  Click on the ");
+		label_1.setBounds(338, 92, 90, 14);
+		panel.add(label_1);
+		
+		JLabel lblGenreTo = new JLabel("  genre to ");
+		lblGenreTo.setBounds(338, 109, 65, 14);
+		panel.add(lblGenreTo);
+		
+		JLabel label_3 = new JLabel("  know more");
+		label_3.setBounds(338, 128, 90, 14);
+		panel.add(label_3);
+		scrollPane2.setVisible(false);
+		
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					String search = txtGenre.getText();					
+					searchlist.clear();
+					Class.forName("oracle.jdbc.driver.OracleDriver");					
+					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM","atika123");
+					
+					Statement stmt = con.createStatement(
+						    ResultSet.TYPE_SCROLL_INSENSITIVE,
+						    ResultSet.CONCUR_READ_ONLY
+						);
+
+					ResultSet rs = stmt.executeQuery("SELECT g_name FROM genre where g_name = '" + search + "'");
+					
+					if (!rs.next()) {										
+						System.out.println("Genre not found");
+						searchlist.addElement("Genre not found");
+						
+						list2.setVisible(true);
+						list.setVisible(false);
+						scrollPane.setVisible(false);
+						scrollPane2.setVisible(true);
+					} 
+					else {						
+						rs.beforeFirst();
+						while (rs.next()) {								
+							System.out.println("Found: " + rs.getString(1));
+							searchlist.addElement(rs.getString(1));
+						}	
+						
+						list2.setVisible(true);
+						list.setVisible(false);
+						
+						MouseListener mouseListener2 = new MouseAdapter() {
+						      public void mouseClicked(MouseEvent mouseEvent) {
+						        JList<?> theList2 = (JList<?>) mouseEvent.getSource();
+						        if (mouseEvent.getClickCount() == 2) {
+						          int index = theList2.locationToIndex(mouseEvent.getPoint());
+						          if (index >= 0) {
+						            Object o = theList2.getModel().getElementAt(index);
+						            GenrebyId frame11 = new GenrebyId(o.toString());
+									frame11.setVisible(true);
+									dispose();
+						          }
+						        }
+						      }
+						    };
+						list2.addMouseListener(mouseListener2);				        
+				        
+						scrollPane.setVisible(false);
+						scrollPane2.setVisible(true);						
+					}					
+					con.close();
+				} 
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});		
 	}
 }

@@ -8,7 +8,7 @@ import java.awt.event.*;
 public class Artists extends JFrame {
 
 	private JPanel contentPane2;
-	private JTextField textField;
+	private JTextField txtArtist;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,10 +42,11 @@ public class Artists extends JFrame {
 		btnSearch.setBounds(338, 11, 90, 25);
 		panel.add(btnSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 13, 318, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtArtist = new JTextField();
+		txtArtist.setText("Enter artist to search for");
+		txtArtist.setBounds(10, 13, 318, 20);
+		panel.add(txtArtist);
+		txtArtist.setColumns(10);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -62,10 +63,6 @@ public class Artists extends JFrame {
 		JLabel label = new JLabel("");
 		label.setBounds(10, 59, 318, 157);
 		panel.add(label);
-		
-		JLabel lblNewLabel = new JLabel("View More");
-		lblNewLabel.setBounds(338, 88, 90, 83);
-		panel.add(lblNewLabel);
 		
 		DefaultListModel<String> artlist = new DefaultListModel<>(); 
 		try {
@@ -136,35 +133,101 @@ public class Artists extends JFrame {
 			}
 		});
 		
+		DefaultListModel<String> searchlist = new DefaultListModel<>();
+		JList<String> list2 = new JList<>(searchlist);
+        list2.setBounds(10, 46, 318, 162);
+        list2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		panel.add(list2);
+		list2.setVisible(false);
+		
+		JScrollPane scrollPane2 = new JScrollPane(list2);
+		scrollPane2.setBounds(10, 45, 318, 168);
+		panel.add(scrollPane2);
+		
+		JLabel label_1 = new JLabel("  Click on the ");
+		label_1.setBounds(338, 84, 90, 14);
+		panel.add(label_1);
+		
+		JLabel lblArtistTo = new JLabel("  artist to ");
+		lblArtistTo.setBounds(338, 101, 65, 14);
+		panel.add(lblArtistTo);
+		
+		JLabel label_3 = new JLabel("  know more");
+		label_3.setBounds(338, 120, 90, 14);
+		panel.add(label_3);
+		scrollPane2.setVisible(false);
+		
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					String search = txtArtist.getText();					
+					searchlist.clear();
+					Class.forName("oracle.jdbc.driver.OracleDriver");					
+					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM","atika123");
 					
-					
-					
+					Statement stmt = con.createStatement(
+						    ResultSet.TYPE_SCROLL_INSENSITIVE,
+						    ResultSet.CONCUR_READ_ONLY
+						);
 
-				} catch (Exception e) {
+					ResultSet rs = stmt.executeQuery("SELECT art_name FROM artist where art_name = '" + search + "'");
+					
+					if (!rs.next()) {										
+						System.out.println("Artist not found");
+						searchlist.addElement("Artist not found");
+						
+						list2.setVisible(true);
+						list.setVisible(false);
+						scrollPane.setVisible(false);
+						scrollPane2.setVisible(true);
+					} 
+					else {						
+						rs.beforeFirst();
+						while (rs.next()) {								
+							System.out.println("Found: " + rs.getString(1));
+							searchlist.addElement(rs.getString(1));
+						}	
+						
+						list2.setVisible(true);
+						list.setVisible(false);
+						
+						MouseListener mouseListener2 = new MouseAdapter() {
+						      public void mouseClicked(MouseEvent mouseEvent) {
+						        JList<?> theList2 = (JList<?>) mouseEvent.getSource();
+						        if (mouseEvent.getClickCount() == 2) {
+						          int index = theList2.locationToIndex(mouseEvent.getPoint());
+						          if (index >= 0) {
+						            Object o = theList2.getModel().getElementAt(index);
+						            ArtistbyId frame9 = new ArtistbyId(o.toString());
+									frame9.setVisible(true);
+									dispose();
+						          }
+						        }
+						      }
+						    };
+						list2.addMouseListener(mouseListener2);				        
+				        
+						scrollPane.setVisible(false);
+						scrollPane2.setVisible(true);						
+					}					
+					con.close();
+				} 
+				catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
+				try {					
 					Home frame = new Home();
 					frame.setVisible(true);
 					dispose();
-					
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
-
 	}
 }

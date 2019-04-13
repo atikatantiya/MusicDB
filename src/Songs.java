@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class Songs extends JFrame {
 
 	private JPanel contentPane2;
-	private JTextField txtEnterSongTo;
+	private JTextField txtSong;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -41,11 +41,11 @@ public class Songs extends JFrame {
 		btnSearch.setBounds(338, 11, 90, 25);
 		panel.add(btnSearch);
 		
-		txtEnterSongTo = new JTextField();
-		txtEnterSongTo.setText("Enter song to search for");
-		txtEnterSongTo.setBounds(10, 13, 318, 20);
-		panel.add(txtEnterSongTo);
-		txtEnterSongTo.setColumns(10);
+		txtSong = new JTextField();
+		txtSong.setText("Enter song to search for");
+		txtSong.setBounds(10, 13, 318, 20);
+		panel.add(txtSong);
+		txtSong.setColumns(10);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -90,7 +90,6 @@ public class Songs extends JFrame {
 				
 				rs.beforeFirst();
 				while (rs.next()) {	
-					//System.out.println(rs.getString(1));
 					songlist.addElement(rs.getString(1)); 
 				}
 			}					
@@ -101,7 +100,7 @@ public class Songs extends JFrame {
 		}		
 		 
         JList<String> list = new JList<>(songlist);
-        list.setBounds(10, 54, 318, 162);
+        list.setBounds(10, 46, 318, 162);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
 		
@@ -112,7 +111,6 @@ public class Songs extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            //System.out.println("Double-clicked on: " + o.toString());
 		            SongbyId frame8 = new SongbyId(o.toString());
 					frame8.setVisible(true);
 					dispose();
@@ -150,20 +148,77 @@ public class Songs extends JFrame {
 			}
 		});
 		
+		DefaultListModel<String> searchlist = new DefaultListModel<>();
+		JList<String> list2 = new JList<>(searchlist);
+        list2.setBounds(10, 46, 318, 162);
+        list2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		panel.add(list2);
+		list2.setVisible(false);
+		
+		JScrollPane scrollPane2 = new JScrollPane(list2);
+		scrollPane2.setBounds(10, 45, 318, 168);
+		panel.add(scrollPane2);
+		scrollPane2.setVisible(false);
+		
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					String search = txtSong.getText();					
+					searchlist.clear();
+					Class.forName("oracle.jdbc.driver.OracleDriver");					
+					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM","atika123");
 					
-					
-					
+					Statement stmt = con.createStatement(
+						    ResultSet.TYPE_SCROLL_INSENSITIVE,
+						    ResultSet.CONCUR_READ_ONLY
+						);
 
-				} catch (Exception e) {
+					ResultSet rs = stmt.executeQuery("SELECT s_name FROM song where s_name = '" + search + "'");
+					
+					if (!rs.next()) {										
+						System.out.println("Song not found");
+						searchlist.addElement("Not found");
+						
+						list2.setVisible(true);
+						list.setVisible(false);
+						scrollPane.setVisible(false);
+						scrollPane2.setVisible(true);
+					} 
+					else {						
+						rs.beforeFirst();
+						while (rs.next()) {								
+							System.out.println("Found: " + rs.getString(1));
+							searchlist.addElement(rs.getString(1));
+						}	
+						
+						list2.setVisible(true);
+						list.setVisible(false);
+						
+						MouseListener mouseListener2 = new MouseAdapter() {
+						      public void mouseClicked(MouseEvent mouseEvent) {
+						        JList<?> theList2 = (JList<?>) mouseEvent.getSource();
+						        if (mouseEvent.getClickCount() == 2) {
+						          int index = theList2.locationToIndex(mouseEvent.getPoint());
+						          if (index >= 0) {
+						            Object o = theList2.getModel().getElementAt(index);
+						            SongbyId frame8 = new SongbyId(o.toString());
+									frame8.setVisible(true);
+									dispose();
+						          }
+						        }
+						      }
+						    };
+						list2.addMouseListener(mouseListener2);				        
+				        
+						scrollPane.setVisible(false);
+						scrollPane2.setVisible(true);						
+					}					
+					con.close();
+				} 
+				catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
-		});
-		
-		
+		});		
 	}
 }
