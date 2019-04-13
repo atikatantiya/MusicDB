@@ -9,15 +9,13 @@ public class Cart extends JFrame {
 
 	private JPanel contentPane2;
 	private JTextField txtEnterNameOf;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//Main frame2 = new Main();
-					//frame2.setVisible(true);
+					Cart frame7 = new Cart();
+					frame7.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -25,13 +23,10 @@ public class Cart extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Cart() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
@@ -90,6 +85,19 @@ public class Cart extends JFrame {
 					Home frame = new Home();
 					frame.setVisible(true);
 					dispose();
+					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
 					
 
 				} catch (Exception e) {

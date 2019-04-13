@@ -9,9 +9,7 @@ public class Artists extends JFrame {
 
 	private JPanel contentPane2;
 	private JTextField textField;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -25,13 +23,10 @@ public class Artists extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Artists() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
@@ -78,6 +73,36 @@ public class Artists extends JFrame {
 					Main frame2 = new Main();
 					frame2.setVisible(true);
 					dispose();					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					
+					
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+					
 
 				} catch (Exception e) {
 					e.printStackTrace();

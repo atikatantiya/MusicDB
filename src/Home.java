@@ -10,9 +10,6 @@ public class Home extends JFrame {
 	private JTextField txtEmail;
 	private JPasswordField txtPassword;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -26,13 +23,10 @@ public class Home extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Home() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -76,8 +70,7 @@ public class Home extends JFrame {
 					String email = txtEmail.getText();
 					String password = String.valueOf(txtPassword.getPassword());
 					
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-					
+					Class.forName("oracle.jdbc.driver.OracleDriver");					
 					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM","atika123");
 					
 					Statement stmt = con.createStatement(
@@ -94,22 +87,19 @@ public class Home extends JFrame {
 						rs.beforeFirst();
 						while (rs.next()) {	
 							System.out.println("Successfully logged in");
-							System.out.println(rs.getInt(1) + " " + rs.getString(2));
-							//lblData.setText("Logged In");
-							//Thread.sleep(1000);
+							System.out.println(rs.getInt(1) + " " + rs.getString(2));					
 							
-							Main frame2 = new Main();
-							frame2.setVisible(true);
-							dispose();
 						}
-					}
-					//con.commit();					
+						
+						Main frame2 = new Main();
+						frame2.setVisible(true);
+						dispose();
+					}					
 					con.close();
 				} 
 				catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 

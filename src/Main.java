@@ -1,10 +1,7 @@
 import java.awt.EventQueue;
-import java.sql.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.event.*;
-import java.awt.List;
 
 public class Main extends JFrame {
 
@@ -27,7 +24,7 @@ public class Main extends JFrame {
 	public Main() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);

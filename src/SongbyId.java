@@ -8,15 +8,13 @@ import java.awt.event.*;
 public class SongbyId extends JFrame {
 
 	private JPanel contentPane2;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//Main frame2 = new Main();
-					//frame2.setVisible(true);
+					SongbyId frame8 = new SongbyId("song1");
+					frame8.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -24,30 +22,29 @@ public class SongbyId extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public SongbyId() {
+	public SongbyId(String s) {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
+		
+		System.out.println(s);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 438, 261);
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
-		JButton btnCart = new JButton("Back");
-		btnCart.addActionListener(new ActionListener() {
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCart.setBounds(339, 227, 89, 23);
-		panel.add(btnCart);
+		btnBack.setBounds(339, 227, 89, 23);
+		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(10, 227, 89, 23);
@@ -72,6 +69,30 @@ public class SongbyId extends JFrame {
 		JLabel pricel = new JLabel("");
 		pricel.setBounds(10, 149, 318, 35);
 		panel.add(pricel);
+		
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Home frame = new Home();
+					frame.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {					
+					Songs frame3 = new Songs();
+					frame3.setVisible(true);
+					dispose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 	}
 }
