@@ -15,7 +15,7 @@ public class SongsbyAlbum extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SongsbyAlbum frame14 = new SongsbyAlbum("album1",1,"null");
+					SongsbyAlbum frame14 = new SongsbyAlbum("album1",1,"null",1);
 					frame14.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -24,7 +24,7 @@ public class SongsbyAlbum extends JFrame {
 		});
 	}
 
-	public SongsbyAlbum(String alb,int ch,String art) {
+	public SongsbyAlbum(String alb,int ch,String art,int usr) {
 		setTitle("Songs in the Album");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +99,7 @@ public class SongsbyAlbum extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            SongbyId frame8 = new SongbyId(o.toString(),3,alb,art);
+		            SongbyId frame8 = new SongbyId(o.toString(),3,alb,art,usr);
 					frame8.setVisible(true);
 					dispose();
 		          }
@@ -128,11 +128,11 @@ public class SongsbyAlbum extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					if(ch==1) {
-						AlbumbyId frame10 = new AlbumbyId(alb,1,"null");
+						AlbumbyId frame10 = new AlbumbyId(alb,1,"null",usr);
 						frame10.setVisible(true);
 					}
 					else if(ch==2){
-						AlbumbyId frame10 = new AlbumbyId(alb,2,art);
+						AlbumbyId frame10 = new AlbumbyId(alb,2,art,usr);
 						frame10.setVisible(true);
 					}
 					

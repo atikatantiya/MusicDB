@@ -16,7 +16,7 @@ public class SongsbyArtist extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SongsbyArtist frame12 = new SongsbyArtist("artist1");
+					SongsbyArtist frame12 = new SongsbyArtist("artist1",1);
 					frame12.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -25,7 +25,7 @@ public class SongsbyArtist extends JFrame {
 		});
 	}
 
-	public SongsbyArtist(String art) {
+	public SongsbyArtist(String art,int usr) {
 		setTitle("Songs by the Artist");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,7 +100,7 @@ public class SongsbyArtist extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            SongbyId frame8 = new SongbyId(o.toString(),2,art,"null");
+		            SongbyId frame8 = new SongbyId(o.toString(),2,art,"null",usr);
 					frame8.setVisible(true);
 					dispose();
 		          }
@@ -128,7 +128,7 @@ public class SongsbyArtist extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					ArtistbyId frame9 = new ArtistbyId(art);
+					ArtistbyId frame9 = new ArtistbyId(art,usr);
 					frame9.setVisible(true);
 					dispose();
 				} catch (Exception e) {

@@ -14,7 +14,7 @@ public class Artists extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Artists frame4 = new Artists();
+					Artists frame4 = new Artists(1);
 					frame4.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -23,7 +23,7 @@ public class Artists extends JFrame {
 		});
 	}
 
-	public Artists() {
+	public Artists(int usr) {
 		setTitle("Artists");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,7 +107,7 @@ public class Artists extends JFrame {
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
 		            //System.out.println("Double-clicked on: " + o.toString());
-		            ArtistbyId frame9 = new ArtistbyId(o.toString());
+		            ArtistbyId frame9 = new ArtistbyId(o.toString(),usr);
 					frame9.setVisible(true);
 					dispose();
 		          }
@@ -123,7 +123,7 @@ public class Artists extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {				
-					Main frame2 = new Main();
+					Main frame2 = new Main(usr);
 					frame2.setVisible(true);
 					dispose();					
 
@@ -199,7 +199,7 @@ public class Artists extends JFrame {
 						          int index = theList2.locationToIndex(mouseEvent.getPoint());
 						          if (index >= 0) {
 						            Object o = theList2.getModel().getElementAt(index);
-						            ArtistbyId frame9 = new ArtistbyId(o.toString());
+						            ArtistbyId frame9 = new ArtistbyId(o.toString(),usr);
 									frame9.setVisible(true);
 									dispose();
 						          }

@@ -17,7 +17,7 @@ public class GenrebyId extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GenrebyId frame11 = new GenrebyId("genre1");
+					GenrebyId frame11 = new GenrebyId("genre1",1);
 					frame11.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -26,7 +26,7 @@ public class GenrebyId extends JFrame {
 		});
 	}
 
-	public GenrebyId(String gen) {
+	public GenrebyId(String gen,int usr) {
 		setTitle("Songs of the Genre");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,7 +101,7 @@ public class GenrebyId extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            SongbyId frame8 = new SongbyId(o.toString(),4,gen,"null");
+		            SongbyId frame8 = new SongbyId(o.toString(),4,gen,"null",usr);
 					frame8.setVisible(true);
 					dispose();
 		          }
@@ -129,7 +129,7 @@ public class GenrebyId extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					Genres frame6 = new Genres();
+					Genres frame6 = new Genres(usr);
 					frame6.setVisible(true);
 					dispose();
 				} catch (Exception e) {

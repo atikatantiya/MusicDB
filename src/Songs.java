@@ -13,7 +13,7 @@ public class Songs extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Songs frame3 = new Songs();
+					Songs frame3 = new Songs(1);
 					frame3.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -22,7 +22,7 @@ public class Songs extends JFrame {
 		});
 	}
 
-	public Songs() {
+	public Songs(int usr) {
 		setTitle("Songs");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,7 +112,7 @@ public class Songs extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            SongbyId frame8 = new SongbyId(o.toString(),1,"null","null");
+		            SongbyId frame8 = new SongbyId(o.toString(),1,"null","null",usr);
 					frame8.setVisible(true);
 					dispose();
 		          }
@@ -128,7 +128,7 @@ public class Songs extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {				
-					Main frame2 = new Main();
+					Main frame2 = new Main(usr);
 					frame2.setVisible(true);
 					dispose();	
 				} catch (Exception e) {
@@ -202,7 +202,7 @@ public class Songs extends JFrame {
 						          int index = theList2.locationToIndex(mouseEvent.getPoint());
 						          if (index >= 0) {
 						            Object o = theList2.getModel().getElementAt(index);
-						            SongbyId frame8 = new SongbyId(o.toString(),1,"null","null");
+						            SongbyId frame8 = new SongbyId(o.toString(),1,"null","null",usr);
 									frame8.setVisible(true);
 									dispose();
 						          }

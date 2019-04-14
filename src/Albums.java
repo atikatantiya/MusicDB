@@ -14,7 +14,7 @@ public class Albums extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Albums frame5 = new Albums();
+					Albums frame5 = new Albums(1);
 					frame5.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -23,7 +23,7 @@ public class Albums extends JFrame {
 		});
 	}
 	
-	public Albums() {
+	public Albums(int usr) {
 		setTitle("Albums");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,7 +105,7 @@ public class Albums extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            AlbumbyId frame10 = new AlbumbyId(o.toString(),1,"null");
+		            AlbumbyId frame10 = new AlbumbyId(o.toString(),1,"null",usr);
 					frame10.setVisible(true);
 					dispose();
 		          }
@@ -121,7 +121,7 @@ public class Albums extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {				
-					Main frame2 = new Main();
+					Main frame2 = new Main(usr);
 					frame2.setVisible(true);
 					dispose();		
 				} catch (Exception e) {
@@ -195,7 +195,7 @@ public class Albums extends JFrame {
 						          int index = theList2.locationToIndex(mouseEvent.getPoint());
 						          if (index >= 0) {
 						            Object o = theList2.getModel().getElementAt(index);
-						            AlbumbyId frame10 = new AlbumbyId(o.toString(),1,"null");
+						            AlbumbyId frame10 = new AlbumbyId(o.toString(),1,"null",usr);
 									frame10.setVisible(true);
 									dispose();
 						          }

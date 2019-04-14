@@ -14,7 +14,7 @@ public class Genres extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Genres frame6 = new Genres();
+					Genres frame6 = new Genres(1);
 					frame6.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -23,7 +23,7 @@ public class Genres extends JFrame {
 		});
 	}
 
-	public Genres() {
+	public Genres(int usr) {
 		setTitle("Genres");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,7 +105,7 @@ public class Genres extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            GenrebyId frame11 = new GenrebyId(o.toString());
+		            GenrebyId frame11 = new GenrebyId(o.toString(),usr);
 					frame11.setVisible(true);
 					dispose();
 		          }
@@ -121,7 +121,7 @@ public class Genres extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {				
-					Main frame2 = new Main();
+					Main frame2 = new Main(usr);
 					frame2.setVisible(true);
 					dispose();	
 				} catch (Exception e) {
@@ -208,7 +208,7 @@ public class Genres extends JFrame {
 						          int index = theList2.locationToIndex(mouseEvent.getPoint());
 						          if (index >= 0) {
 						            Object o = theList2.getModel().getElementAt(index);
-						            GenrebyId frame11 = new GenrebyId(o.toString());
+						            GenrebyId frame11 = new GenrebyId(o.toString(),usr);
 									frame11.setVisible(true);
 									dispose();
 						          }

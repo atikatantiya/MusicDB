@@ -15,7 +15,7 @@ public class AlbumbyId extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					 AlbumbyId frame10 = new AlbumbyId("album1",1,"null");
+					 AlbumbyId frame10 = new AlbumbyId("album1",1,"null",1);
 						frame10.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -24,7 +24,7 @@ public class AlbumbyId extends JFrame {
 		});
 	}
 
-	public AlbumbyId(String s,int ch,String s2) {
+	public AlbumbyId(String s,int ch,String s2,int usr) {
 		setTitle("Album Details");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,11 +141,11 @@ public class AlbumbyId extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {	
 					if(ch==1) {
-						Albums frame5 = new Albums();
+						Albums frame5 = new Albums(usr);
 						frame5.setVisible(true);
 					}
 					else if(ch==2) {
-						AlbumsbyArtist frame13 = new AlbumsbyArtist(s2);
+						AlbumsbyArtist frame13 = new AlbumsbyArtist(s2,usr);
 						frame13.setVisible(true);
 					}
 					dispose();
@@ -158,7 +158,7 @@ public class AlbumbyId extends JFrame {
 		btnViewSongs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					SongsbyAlbum frame14 = new SongsbyAlbum(s,ch,s2);
+					SongsbyAlbum frame14 = new SongsbyAlbum(s,ch,s2,usr);
 					frame14.setVisible(true);
 					dispose();
 				} catch (Exception e) {

@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.*;
 
 public class Home extends JFrame {
+	int usr;
 
 	private JPanel contentPane;
 	private JTextField txtEmail;
@@ -88,11 +89,11 @@ public class Home extends JFrame {
 						rs.beforeFirst();
 						while (rs.next()) {	
 							System.out.println("Successfully logged in");
-							System.out.println(rs.getInt(1) + " " + rs.getString(2));					
-							
+							System.out.println(rs.getInt(1) + "\t" + rs.getString(2));	
+							usr = rs.getInt(1);
 						}
 						
-						Main frame2 = new Main();
+						Main frame2 = new Main(usr);
 						frame2.setVisible(true);
 						dispose();
 					}					

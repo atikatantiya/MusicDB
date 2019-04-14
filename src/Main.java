@@ -12,7 +12,7 @@ public class Main extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame2 = new Main();
+					Main frame2 = new Main(1);
 					frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -21,18 +21,18 @@ public class Main extends JFrame {
 		});
 	}
 
-	public Main() {
+	public Main(int usr) {
 		setTitle("Home Page");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
+		setBounds(500, 200, 500, 495);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		panel.setBounds(0, 0, 484, 461);
 		contentPane2.add(panel);
 		panel.setLayout(null);						
 
@@ -77,24 +77,20 @@ public class Main extends JFrame {
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					
+				try {					
 					Home frame = new Home();
 					frame.setVisible(true);
 					dispose();
-					
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 		
 		btnSongs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					Songs frame3 = new Songs();
+					Songs frame3 = new Songs(usr);
 					frame3.setVisible(true);
 					dispose();					
 
@@ -108,7 +104,7 @@ public class Main extends JFrame {
 		btnArtists.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					Artists frame4 = new Artists();
+					Artists frame4 = new Artists(usr);
 					frame4.setVisible(true);
 					dispose();					
 				} catch (Exception e) {
@@ -120,7 +116,7 @@ public class Main extends JFrame {
 		btnAlbums.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					Albums frame5 = new Albums();
+					Albums frame5 = new Albums(usr);
 					frame5.setVisible(true);
 					dispose();
 				} catch (Exception e) {
@@ -132,7 +128,7 @@ public class Main extends JFrame {
 		btnGenres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {				
-					Genres frame6 = new Genres();
+					Genres frame6 = new Genres(usr);
 					frame6.setVisible(true);
 					dispose();
 				} catch (Exception e) {
@@ -144,7 +140,7 @@ public class Main extends JFrame {
 		btnCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					Cart frame7 = new Cart();
+					Cart frame7 = new Cart(usr);
 					frame7.setVisible(true);
 					dispose();
 				} catch (Exception e) {

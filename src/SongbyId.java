@@ -9,12 +9,13 @@ import java.awt.Font;
 public class SongbyId extends JFrame {
 
 	private JPanel contentPane2;
-	
+	String pur_id,p_id,song_id;
+	int song_price,total_cost;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SongbyId frame8 = new SongbyId("song1",1,"null","null");
+					SongbyId frame8 = new SongbyId("song1",1,"null","null",1);
 					frame8.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -23,7 +24,7 @@ public class SongbyId extends JFrame {
 		});
 	}
 
-	public SongbyId(String s,int ch,String s2,String s3) {
+	public SongbyId(String s,int ch,String s2,String s3,int usr) {
 		setTitle("Song Details");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -182,26 +183,26 @@ public class SongbyId extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
 					if(ch==1) {
-						Songs frame3 = new Songs();
+						Songs frame3 = new Songs(usr);
 						frame3.setVisible(true);
 					}
 					else if(ch==2){
-						SongsbyArtist frame12 = new SongsbyArtist(s2);
+						SongsbyArtist frame12 = new SongsbyArtist(s2,usr);
 						frame12.setVisible(true);
 					}
 					else if(ch==3) {
 						if(s3.equals("null")) {
-							SongsbyAlbum frame14 = new SongsbyAlbum(s2,1,s3);
+							SongsbyAlbum frame14 = new SongsbyAlbum(s2,1,s3,usr);
 							frame14.setVisible(true);
 						}
 						else {
-							SongsbyAlbum frame14 = new SongsbyAlbum(s2,2,s3);
+							SongsbyAlbum frame14 = new SongsbyAlbum(s2,2,s3,usr);
 							frame14.setVisible(true);
 						}
 						
 					}
 					else if(ch==4) {
-						GenrebyId frame11 = new GenrebyId(s2);
+						GenrebyId frame11 = new GenrebyId(s2,usr);
 						frame11.setVisible(true);
 					}					
 					dispose();
@@ -211,11 +212,124 @@ public class SongbyId extends JFrame {
 			}
 		});
 		
+		
+		
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {					
+				try {			
+					Class.forName("oracle.jdbc.driver.OracleDriver");					
+					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM","atika123");
 					
-				} catch (Exception e) {
+					Statement stmt = con.createStatement(
+						    ResultSet.TYPE_SCROLL_INSENSITIVE,
+						    ResultSet.CONCUR_READ_ONLY
+						);
+
+					ResultSet rs = stmt.executeQuery("SELECT * FROM purchase where user_id = '" + usr + "'");
+					//doesn't exist
+					if (!rs.next()) {
+						
+						ResultSet rs2 = stmt.executeQuery("INSERT INTO purchase(user_id,p_date,total_cost) VALUES(" + usr + ",sysdate,0)");						
+						if(!rs2.next()) {
+							System.out.println("System error");
+						}
+						//inserted into purchase
+						else {
+							ResultSet rs3 = stmt.executeQuery("SELECT song_id,s_price from song where s_name ='" + s + "'" );							
+							if(!rs3.next()) {
+								System.out.println("System error");
+							}
+							//song details found
+							else {
+								song_id = rs3.getString(1);
+								song_price = rs3.getInt(2);		
+								
+								ResultSet rs4 = stmt.executeQuery("Select purchase_id from purchase where user_id='" + usr +"'");
+								if(!rs4.next()) {
+									System.out.println("System error");
+								}
+								else {
+									pur_id = rs4.getString(1);
+								}
+								
+								rs4 = stmt.executeQuery("Insert into purchased_item(purchase_id,song_id,i_price) values(" + pur_id + "," + song_id + "," + song_price + ")");
+								if(!rs4.next()) {
+									System.out.println("System error");
+								}
+								//inserted into purchased_item
+								else {
+									ResultSet rs5 = stmt.executeQuery("Select sum(i_price) from purchased_item where purchase_id='" + pur_id + "'");
+									if(!rs5.next()) {
+										System.out.println("System error");
+									}
+									else {
+										total_cost = rs5.getInt(1);
+										ResultSet rs6 = stmt.executeQuery("Update purchase set total_cost=" + total_cost + "where purchase_id='" + pur_id + "'");
+										if(!rs6.next()) {
+											System.out.println("System error");
+										}
+										else {
+											System.out.println("Successfully added to cart");
+											Cart frame7 = new Cart(usr);
+											frame7.setVisible(true);
+											dispose();
+										}
+									}
+								}
+							}
+						}						
+					} 
+					//exists
+					else {				
+						ResultSet rs3 = stmt.executeQuery("SELECT song_id,s_price from song where s_name ='" + s + "'" );							
+						if(!rs3.next()) {
+							System.out.println("System error");
+						}
+						//found song details
+						else {
+							song_id = rs3.getString(1);
+							song_price = rs3.getInt(2);		
+							
+							ResultSet rs4 = stmt.executeQuery("Select purchase_id from purchase where user_id='" + usr +"'");
+							if(!rs4.next()) {
+								System.out.println("System error");
+							}
+							//found purchase id
+							else {
+								pur_id = rs4.getString(1);
+							}
+							
+							rs4 = stmt.executeQuery("Insert into purchased_item(purchase_id,song_id,i_price) values(" + pur_id + "," + song_id + "," + song_price + ")");
+							if(!rs4.next()) {
+								System.out.println("System error");
+							}
+							//inserted into purchased item
+							else {
+								ResultSet rs5 = stmt.executeQuery("Select sum(i_price) from purchased_item where purchase_id='" + pur_id + "'");
+								if(!rs5.next()) {
+									System.out.println("System error");
+								}
+								else {
+									total_cost = rs5.getInt(1);
+									ResultSet rs6 = stmt.executeQuery("Update purchase set total_cost=" + total_cost + "where purchase_id='" + pur_id + "'");
+									if(!rs6.next()) {
+										System.out.println("System error");
+									}
+									else {
+										System.out.println("Successfully added to cart");
+										Cart frame7 = new Cart(usr);
+										frame7.setVisible(true);
+										dispose();
+									}
+								}
+								
+							}							
+						}
+					}							
+					
+					con.close();
+				} 
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}

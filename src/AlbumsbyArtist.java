@@ -16,7 +16,7 @@ public class AlbumsbyArtist extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlbumsbyArtist frame13 = new AlbumsbyArtist("artist1");
+					AlbumsbyArtist frame13 = new AlbumsbyArtist("artist1",1);
 					frame13.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -25,7 +25,7 @@ public class AlbumsbyArtist extends JFrame {
 		});
 	}
 
-	public AlbumsbyArtist(String art) {
+	public AlbumsbyArtist(String art,int usr) {
 		setTitle("Albums by the Artist");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +104,7 @@ public class AlbumsbyArtist extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            AlbumbyId frame10 = new AlbumbyId(o.toString(),2,art);
+		            AlbumbyId frame10 = new AlbumbyId(o.toString(),2,art,usr);
 					frame10.setVisible(true);
 					dispose();
 		          }
@@ -132,7 +132,7 @@ public class AlbumsbyArtist extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					ArtistbyId frame9 = new ArtistbyId(art);
+					ArtistbyId frame9 = new ArtistbyId(art,usr);
 					frame9.setVisible(true);
 					dispose();
 				} catch (Exception e) {
