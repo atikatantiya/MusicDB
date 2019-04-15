@@ -28,36 +28,28 @@ public class SongsbyAlbum extends JFrame {
 		setTitle("Songs in the Album");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 420);
+		panel.setBounds(0, 0, 484, 381);
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBack.setBounds(339, 227, 89, 23);
+		btnBack.setBounds(384, 343, 90, 25);
 		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
+		btnLogout.setBounds(10, 343, 83, 25);
 		panel.add(btnLogout);
 		
 		JLabel namel = new JLabel("");
 		namel.setBounds(10, 32, 290, 45);
 		panel.add(namel);
-		
-		JLabel lblViewMore = new JLabel("View More");
-		lblViewMore.setBounds(357, 32, 71, 39);
-		panel.add(lblViewMore);
 		
 		DefaultListModel<String> songlist = new DefaultListModel<>(); 
 		try {
@@ -88,7 +80,7 @@ public class SongsbyAlbum extends JFrame {
 		}		
 		 
         JList<String> list = new JList<>(songlist);
-        list.setBounds(10, 54, 318, 162);
+        list.setBounds(10, 70, 455, 200);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
 		
@@ -109,8 +101,18 @@ public class SongsbyAlbum extends JFrame {
 		list.addMouseListener(mouseListener);
         
         JScrollPane scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(10, 45, 318, 168);
+		scrollPane.setBounds(10, 70, 455, 200);
 		panel.add(scrollPane);
+		
+		JLabel lblClickOnA = new JLabel("Click on a song to know more");
+		lblClickOnA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClickOnA.setBounds(10, 281, 185, 25);
+		panel.add(lblClickOnA);
+		
+		JLabel lblSongsInThe = new JLabel("Songs in the Album");
+		lblSongsInThe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSongsInThe.setBounds(141, 11, 159, 41);
+		panel.add(lblSongsInThe);
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -26,25 +26,25 @@ public class Songs extends JFrame {
 		setTitle("Songs");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 495);
+		panel.setBounds(0, 0, 484, 456);
 		contentPane2.add(panel);
 		panel.setLayout(null);						
 
 		JButton btnSearch = new JButton("Search");
 
-		btnSearch.setBounds(338, 11, 90, 25);
+		btnSearch.setBounds(384, 11, 90, 25);
 		panel.add(btnSearch);
 		
 		txtSong = new JTextField();
 		txtSong.setText("Enter song to search for");
-		txtSong.setBounds(10, 13, 318, 20);
+		txtSong.setBounds(10, 13, 364, 23);
 		panel.add(txtSong);
 		txtSong.setColumns(10);
 		
@@ -53,24 +53,12 @@ public class Songs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBack.setBounds(339, 227, 89, 23);
+		btnBack.setBounds(384, 420, 90, 25);
 		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
+		btnLogout.setBounds(10, 420, 96, 25);
 		panel.add(btnLogout);
-		
-		JLabel lblClick = new JLabel("  Click on the ");
-		lblClick.setBounds(338, 88, 90, 14);
-		panel.add(lblClick);		
-		
-		JLabel lblSong = new JLabel("  song to ");
-		lblSong.setBounds(338, 105, 65, 14);
-		panel.add(lblSong);	
-		
-		JLabel lblKnowMore = new JLabel("  know more");
-		lblKnowMore.setBounds(338, 124, 90, 14);
-		panel.add(lblKnowMore);
 		
 		DefaultListModel<String> songlist = new DefaultListModel<>(); 
 		try {
@@ -101,7 +89,7 @@ public class Songs extends JFrame {
 		}		
 		 
         JList<String> list = new JList<>(songlist);
-        list.setBounds(10, 46, 318, 162);
+        list.setBounds(10, 46, 364, 300);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
 		
@@ -122,7 +110,7 @@ public class Songs extends JFrame {
 		list.addMouseListener(mouseListener);
         
         JScrollPane scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(10, 45, 318, 168);
+		scrollPane.setBounds(10, 45, 364, 300);
 		panel.add(scrollPane);				
 		
 		btnBack.addActionListener(new ActionListener() {
@@ -151,14 +139,19 @@ public class Songs extends JFrame {
 		
 		DefaultListModel<String> searchlist = new DefaultListModel<>();
 		JList<String> list2 = new JList<>(searchlist);
-        list2.setBounds(10, 46, 318, 162);
+		list2.setBounds(10, 46, 364, 300);
         list2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list2);
 		list2.setVisible(false);
 		
 		JScrollPane scrollPane2 = new JScrollPane(list2);
-		scrollPane2.setBounds(10, 45, 318, 168);
+		scrollPane2.setBounds(10, 45, 364, 300);
 		panel.add(scrollPane2);
+		
+		JLabel lblClickOnA = new JLabel("Click on a song to know more");
+		lblClickOnA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClickOnA.setBounds(10, 356, 364, 25);
+		panel.add(lblClickOnA);
 		scrollPane2.setVisible(false);
 		
 		btnSearch.addActionListener(new ActionListener() {

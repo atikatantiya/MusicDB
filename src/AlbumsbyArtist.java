@@ -29,40 +29,24 @@ public class AlbumsbyArtist extends JFrame {
 		setTitle("Albums by the Artist");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 420);
+		panel.setBounds(0, 0, 484, 381);
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBack.setBounds(339, 227, 89, 23);
+		btnBack.setBounds(384, 343, 90, 25);
 		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
+		btnLogout.setBounds(10, 343, 83, 25);
 		panel.add(btnLogout);
-		
-		JLabel label = new JLabel("  Click on the ");
-		label.setBounds(338, 91, 90, 14);
-		panel.add(label);
-		
-		JLabel label_1 = new JLabel("  album to ");
-		label_1.setBounds(338, 108, 65, 14);
-		panel.add(label_1);
-		
-		JLabel label_2 = new JLabel("  know more");
-		label_2.setBounds(338, 127, 90, 14);
-		panel.add(label_2);
 		
 		DefaultListModel<String> alblist = new DefaultListModel<>(); 
 		try {
@@ -93,7 +77,7 @@ public class AlbumsbyArtist extends JFrame {
 		}		
 		 
         JList<String> list = new JList<>(alblist);
-        list.setBounds(10, 54, 318, 162);
+        list.setBounds(10, 70, 455, 200);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
 		
@@ -114,8 +98,18 @@ public class AlbumsbyArtist extends JFrame {
 		list.addMouseListener(mouseListener);
         
         JScrollPane scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(10, 45, 318, 168);
+		scrollPane.setBounds(10, 70, 455, 200);
 		panel.add(scrollPane);
+		
+		JLabel lblAlbumsByThe = new JLabel("Albums by the Artist");
+		lblAlbumsByThe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAlbumsByThe.setBounds(157, 11, 159, 41);
+		panel.add(lblAlbumsByThe);
+		
+		JLabel label = new JLabel("Click on an album to know more");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBounds(10, 281, 231, 25);
+		panel.add(label);
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

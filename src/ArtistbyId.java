@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.sql.*;
@@ -7,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.event.*;
 
+//select count(song_id) from song where album_id in (select album_id from album,artist where artist.artist_id = album.artist_id and art_name = 'artist1');
 public class ArtistbyId extends JFrame {
 
 	private JPanel contentPane2;
@@ -28,62 +28,64 @@ public class ArtistbyId extends JFrame {
 		setTitle("Artist Details");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 420);
+		panel.setBounds(0, 0, 484, 381);
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBack.setBounds(339, 227, 89, 23);
+		btnBack.setBounds(384, 343, 90, 25);
 		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
-		panel.add(btnLogout);		
+		btnLogout.setBounds(10, 343, 83, 25);
+		panel.add(btnLogout);	
 		
 		JButton btnSongs = new JButton("List Songs");		
-		btnSongs.setBounds(326, 29, 102, 23);
+		btnSongs.setBounds(366, 125, 108, 23);
 		panel.add(btnSongs);
 		
 		JButton btnAlbums = new JButton("List Albums");		
-		btnAlbums.setBounds(326, 118, 102, 23);
+		btnAlbums.setBounds(366, 207, 108, 23);
 		panel.add(btnAlbums);
-		
-		JLabel lblExtra = new JLabel("");
-		lblExtra.setBounds(10, 11, 290, 38);
-		panel.add(lblExtra);
 		
 		JLabel lblname = new JLabel("Name");
 		lblname.setHorizontalAlignment(SwingConstants.CENTER);
-		lblname.setBounds(10, 68, 89, 38);
+		lblname.setBounds(10, 119, 108, 35);
 		panel.add(lblname);
-		lblname.setFont(new Font("Courier", Font.BOLD, 14));
+		lblname.setFont(new Font("Corbel", Font.BOLD, 15));
 		
 		JLabel lblbio = new JLabel("Bio");
 		lblbio.setHorizontalAlignment(SwingConstants.CENTER);
-		lblbio.setBounds(10, 128, 89, 64);
+		lblbio.setBounds(10, 186, 108, 35);
 		panel.add(lblbio);
-		lblbio.setFont(new Font("Courier", Font.BOLD, 14));
+		lblbio.setFont(new Font("Corbel", Font.BOLD, 15));
+		//namel.setForeground(Color.GRAY);
+		
+		JLabel lblArtistDetails = new JLabel("Artist Details");
+		lblArtistDetails.setHorizontalAlignment(SwingConstants.CENTER);
+		lblArtistDetails.setBounds(141, 11, 159, 41);
+		panel.add(lblArtistDetails);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(141, 186, 208, 61);
+		panel.add(scrollPane);
 		
 		JLabel biol = new JLabel("");
-		biol.setBounds(133, 128, 167, 64);
-		panel.add(biol);
-		biol.setForeground(Color.GRAY);
+		scrollPane.setViewportView(biol);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(140, 119, 209, 35);
+		panel.add(scrollPane_1);
 		
 		JLabel namel = new JLabel("");
-		namel.setBounds(133, 68, 167, 38);
-		panel.add(namel);
-		namel.setForeground(Color.GRAY);
+		scrollPane_1.setViewportView(namel);
 		
 		try {			
 			Class.forName("oracle.jdbc.driver.OracleDriver");					
@@ -101,8 +103,8 @@ public class ArtistbyId extends JFrame {
 			} else {				
 				rs.beforeFirst();
 				while (rs.next()) {	
-					 namel.setText(rs.getString(1));
-					 biol.setText(rs.getString(2));
+					namel.setText(rs.getString(1));
+					biol.setText(rs.getString(2));
 				}
 			}		
 

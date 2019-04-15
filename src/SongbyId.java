@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.event.*;
-import java.awt.Color;
 import java.awt.Font;
 public class SongbyId extends JFrame {
 
@@ -28,7 +27,6 @@ public class SongbyId extends JFrame {
 		setTitle("Song Details");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
@@ -37,80 +35,79 @@ public class SongbyId extends JFrame {
 		//System.out.println(s);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 420);
+		panel.setBounds(0, 0, 484, 381);
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBack.setBounds(339, 227, 89, 23);
+		btnBack.setBounds(384, 343, 90, 25);
 		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
-		panel.add(btnLogout);		
+		btnLogout.setBounds(10, 343, 83, 25);
+		panel.add(btnLogout);	
 		
 		JButton btnBuy = new JButton("Buy Now");
-		btnBuy.setBounds(339, 11, 89, 23);
+		btnBuy.setBounds(374, 19, 100, 25);
 		panel.add(btnBuy);
 		
 		JLabel lblartist = new JLabel("Artist");
 		lblartist.setHorizontalAlignment(SwingConstants.CENTER);
-		lblartist.setBounds(23, 32, 100, 35);
+		lblartist.setBounds(22, 63, 121, 35);
 		panel.add(lblartist);
-		lblartist.setFont(new Font("Courier", Font.BOLD, 14));
+		lblartist.setFont(new Font("Corbel", Font.BOLD, 15));
 		
 		JLabel lblalbum = new JLabel("Album");
 		lblalbum.setHorizontalAlignment(SwingConstants.CENTER);
-		lblalbum.setBounds(23, 78, 100, 35);
+		lblalbum.setBounds(22, 122, 121, 35);
 		panel.add(lblalbum);
-		lblalbum.setFont(new Font("Courier", Font.BOLD, 14));
+		lblalbum.setFont(new Font("Corbel", Font.BOLD, 15));
 		
 		JLabel lblgenre = new JLabel("Genre");
 		lblgenre.setHorizontalAlignment(SwingConstants.CENTER);
-		lblgenre.setBounds(23, 123, 100, 35);
+		lblgenre.setBounds(22, 186, 121, 35);
 		panel.add(lblgenre);
-		lblgenre.setFont(new Font("Courier", Font.BOLD, 14));
+		lblgenre.setFont(new Font("Corbel", Font.BOLD, 15));
 		
 		JLabel lblprice = new JLabel("Price");
 		lblprice.setHorizontalAlignment(SwingConstants.CENTER);
-		lblprice.setBounds(23, 169, 100, 35);
+		lblprice.setBounds(22, 248, 121, 35);
 		panel.add(lblprice);
-		lblprice.setFont(new Font("Courier", Font.BOLD, 14));		
+		lblprice.setFont(new Font("Corbel", Font.BOLD, 15));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(172, 63, 168, 35);
+		panel.add(scrollPane);
 		
 		JLabel pricel = new JLabel("");
-		pricel.setHorizontalAlignment(SwingConstants.CENTER);
-		pricel.setBounds(166, 169, 116, 35);
-		panel.add(pricel);
-		pricel.setForeground(Color.GRAY);
+		scrollPane.setViewportView(pricel);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(172, 122, 168, 35);
+		panel.add(scrollPane_1);
 		
 		JLabel genl = new JLabel("");
-		genl.setHorizontalAlignment(SwingConstants.CENTER);
-		genl.setBounds(166, 123, 116, 35);
-		panel.add(genl);
-		genl.setForeground(Color.GRAY);
+		scrollPane_1.setViewportView(genl);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(172, 186, 168, 35);
+		panel.add(scrollPane_2);
 		
 		JLabel albl = new JLabel("");
-		albl.setHorizontalAlignment(SwingConstants.CENTER);
-		albl.setBounds(166, 78, 116, 35);
-		panel.add(albl);
-		albl.setForeground(Color.GRAY);
+		scrollPane_2.setViewportView(albl);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(172, 248, 168, 35);
+		panel.add(scrollPane_3);
 		
 		JLabel artl = new JLabel("");
-		artl.setHorizontalAlignment(SwingConstants.CENTER);
-		artl.setBounds(166, 32, 116, 35);
-		panel.add(artl);
-		artl.setForeground(Color.GRAY);
+		scrollPane_3.setViewportView(artl);		
 		
-		JLabel lblName = new JLabel("");
-		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblName.setBounds(48, 0, 281, 23);
-		panel.add(lblName);
-		lblName.setFont(new Font("Courier", Font.BOLD, 14));
-		lblName.setText(s);
+		JLabel lblSongDetails = new JLabel("Song Details");
+		lblSongDetails.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSongDetails.setBounds(138, 11, 159, 41);
+		panel.add(lblSongDetails);
 		
         try {			
 			Class.forName("oracle.jdbc.driver.OracleDriver");					
@@ -204,7 +201,11 @@ public class SongbyId extends JFrame {
 					else if(ch==4) {
 						GenrebyId frame11 = new GenrebyId(s2,usr);
 						frame11.setVisible(true);
-					}					
+					}	
+					else if(ch==5) {
+						Main frame2 = new Main(usr);
+						frame2.setVisible(true);
+					}
 					dispose();
 				} catch (Exception e) {
 					e.printStackTrace();

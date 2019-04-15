@@ -27,43 +27,44 @@ public class Artists extends JFrame {
 		setTitle("Artists");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 495);
+		panel.setBounds(0, 0, 484, 456);
 		contentPane2.add(panel);
 		panel.setLayout(null);						
 
 		JButton btnSearch = new JButton("Search");
 
-		btnSearch.setBounds(338, 11, 90, 25);
+		btnSearch.setBounds(384, 11, 90, 25);
 		panel.add(btnSearch);
 		
 		txtArtist = new JTextField();
 		txtArtist.setText("Enter artist to search for");
-		txtArtist.setBounds(10, 13, 318, 20);
+		txtArtist.setBounds(10, 13, 364, 20);
 		panel.add(txtArtist);
 		txtArtist.setColumns(10);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBack.setBounds(339, 227, 89, 23);
+		btnBack.setBounds(384, 420, 90, 25);
 		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
+		btnLogout.setBounds(10, 420, 83, 25);
 		panel.add(btnLogout);
 		
-		JLabel label = new JLabel("");
+		/*JLabel label = new JLabel("");
 		label.setBounds(10, 59, 318, 157);
-		panel.add(label);
+		panel.add(label);*/
+		
+		JLabel lblClickOnA = new JLabel("Click on an artist to know more");
+		lblClickOnA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClickOnA.setBounds(10, 356, 364, 25);
+		panel.add(lblClickOnA);
 		
 		DefaultListModel<String> artlist = new DefaultListModel<>(); 
 		try {
@@ -84,7 +85,6 @@ public class Artists extends JFrame {
 				
 				rs.beforeFirst();
 				while (rs.next()) {	
-					//System.out.println(rs.getString(1));
 					artlist.addElement(rs.getString(1)); 
 				}
 			}					
@@ -95,7 +95,7 @@ public class Artists extends JFrame {
 		}		
 		 
         JList<String> list = new JList<>(artlist);
-        list.setBounds(10, 54, 318, 162);
+        list.setBounds(10, 46, 364, 300);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
 		
@@ -106,7 +106,6 @@ public class Artists extends JFrame {
 		          int index = theList.locationToIndex(mouseEvent.getPoint());
 		          if (index >= 0) {
 		            Object o = theList.getModel().getElementAt(index);
-		            //System.out.println("Double-clicked on: " + o.toString());
 		            ArtistbyId frame9 = new ArtistbyId(o.toString(),usr);
 					frame9.setVisible(true);
 					dispose();
@@ -117,7 +116,7 @@ public class Artists extends JFrame {
 		list.addMouseListener(mouseListener);
         
         JScrollPane scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(10, 45, 318, 168);
+        scrollPane.setBounds(10, 45, 364, 300);
 		panel.add(scrollPane);
 		
 		btnBack.addActionListener(new ActionListener() {
@@ -136,26 +135,14 @@ public class Artists extends JFrame {
 		
 		DefaultListModel<String> searchlist = new DefaultListModel<>();
 		JList<String> list2 = new JList<>(searchlist);
-        list2.setBounds(10, 46, 318, 162);
+		list2.setBounds(10, 46, 364, 300);
         list2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list2);
 		list2.setVisible(false);
 		
 		JScrollPane scrollPane2 = new JScrollPane(list2);
-		scrollPane2.setBounds(10, 45, 318, 168);
+		scrollPane2.setBounds(10, 45, 364, 300);
 		panel.add(scrollPane2);
-		
-		JLabel label_1 = new JLabel("  Click on the ");
-		label_1.setBounds(338, 84, 90, 14);
-		panel.add(label_1);
-		
-		JLabel lblArtistTo = new JLabel("  artist to ");
-		lblArtistTo.setBounds(338, 101, 65, 14);
-		panel.add(lblArtistTo);
-		
-		JLabel label_3 = new JLabel("  know more");
-		label_3.setBounds(338, 120, 90, 14);
-		panel.add(label_3);
 		scrollPane2.setVisible(false);
 		
 		btnSearch.addActionListener(new ActionListener() {

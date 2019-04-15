@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.sql.*;
@@ -32,32 +31,32 @@ public class Cart extends JFrame {
 		setTitle("Cart");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 495);
+		panel.setBounds(0, 0, 484, 456);
 		contentPane2.add(panel);
 		panel.setLayout(null);				
 		
 		JLabel lblTotal = new JLabel("Total Cost");
 		lblTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTotal.setBounds(315, 47, 113, 25);
+		lblTotal.setBounds(344, 104, 130, 25);
 		panel.add(lblTotal);
-		lblTotal.setFont(new Font("Courier", Font.BOLD, 14));
+		lblTotal.setFont(new Font("Corbel", Font.BOLD, 15));
 		
 		JLabel costl = new JLabel("");
 		costl.setHorizontalAlignment(SwingConstants.CENTER);
-		costl.setBounds(315, 78, 113, 25);
+		costl.setBounds(354, 140, 113, 25);
 		panel.add(costl);
-		costl.setForeground(Color.GRAY);
+		//costl.setForeground(Color.GRAY);
 
 		JButton btnDelete = new JButton("Delete from Cart");
 
-		btnDelete.setBounds(298, 11, 130, 25);
+		btnDelete.setBounds(344, 11, 130, 25);
 		panel.add(btnDelete);
 		
 		JButton btnHome = new JButton("Continue Shopping");
@@ -65,16 +64,16 @@ public class Cart extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnHome.setBounds(285, 227, 143, 23);
+		btnHome.setBounds(331, 422, 143, 23);
 		panel.add(btnHome);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
+		btnLogout.setBounds(10, 422, 89, 23);
 		panel.add(btnLogout);
 		
 		txtSong = new JTextField();
 		txtSong.setText("Enter name of song");
-		txtSong.setBounds(10, 13, 278, 20);
+		txtSong.setBounds(10, 13, 324, 20);
 		panel.add(txtSong);
 		txtSong.setColumns(10);
 		
@@ -125,27 +124,27 @@ public class Cart extends JFrame {
 		}		
 		 
         JList<String> list = new JList<>(cartlist);
-        list.setBounds(10, 45, 240, 168);
+        list.setBounds(10, 45, 274, 320);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list);
         
         JScrollPane scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(10, 45, 240, 168);
+		scrollPane.setBounds(10, 45, 274, 320);
 		panel.add(scrollPane);	
 		costl.setText(String.valueOf(total_cost));
 		
 		JList<String> list2 = new JList<>(pricelist);
-        list2.setBounds(249, 45, 50, 168);
+        list2.setBounds(282, 45, 50, 320);
         list2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		panel.add(list2);
         
         JScrollPane scrollPane2 = new JScrollPane(list2);
-		scrollPane2.setBounds(249, 45, 50, 168);
+		scrollPane2.setBounds(282, 45, 50, 320);
 		panel.add(scrollPane2);	
 		
 		JLabel lblData = new JLabel("");
 		lblData.setHorizontalAlignment(SwingConstants.CENTER);
-		lblData.setBounds(315, 130, 113, 36);
+		lblData.setBounds(344, 252, 130, 36);
 		panel.add(lblData);
 		
 		btnHome.addActionListener(new ActionListener() {

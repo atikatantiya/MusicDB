@@ -93,6 +93,8 @@ public class Home extends JFrame {
 							usr = rs.getInt(1);
 						}
 						
+						toast obj = new toast("Logged in",670,430);
+						obj.showtoast();
 						Main frame2 = new Main(usr);
 						frame2.setVisible(true);
 						dispose();

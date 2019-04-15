@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.sql.*;
@@ -28,61 +27,86 @@ public class AlbumbyId extends JFrame {
 		setTitle("Album Details");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 450, 300);
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 438, 261);
+		setBounds(450, 150, 500, 420);
+		panel.setBounds(0, 0, 484, 381);
 		contentPane2.add(panel);
 		panel.setLayout(null);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBack.setBounds(339, 227, 89, 23);
+		btnBack.setBounds(384, 343, 90, 25);
 		panel.add(btnBack);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(10, 227, 89, 23);
+		btnLogout.setBounds(10, 343, 83, 25);
 		panel.add(btnLogout);
 		
 		JLabel lblname = new JLabel("Name");
 		lblname.setHorizontalAlignment(SwingConstants.CENTER);
-		lblname.setBounds(10, 27, 121, 35);
+		lblname.setBounds(22, 63, 121, 35);
 		panel.add(lblname);
-		lblname.setFont(new Font("Courier", Font.BOLD, 14));
+		lblname.setFont(new Font("Corbel", Font.BOLD, 15));
 		
 		JLabel lblartist = new JLabel("Artist");
 		lblartist.setHorizontalAlignment(SwingConstants.CENTER);
-		lblartist.setBounds(10, 89, 121, 35);
+		lblartist.setBounds(22, 122, 121, 35);
 		panel.add(lblartist);
-		lblartist.setFont(new Font("Courier", Font.BOLD, 14));
+		lblartist.setFont(new Font("Corbel", Font.BOLD, 15));
 		
 		JLabel lblrelease = new JLabel("Release Date");
 		lblrelease.setHorizontalAlignment(SwingConstants.CENTER);
-		lblrelease.setBounds(10, 149, 121, 35);
+		lblrelease.setBounds(22, 186, 121, 35);
 		panel.add(lblrelease);
-		lblrelease.setFont(new Font("Courier", Font.BOLD, 14));
+		lblrelease.setFont(new Font("Corbel", Font.BOLD, 15));
+		//releasel.setForeground(Color.GRAY);
+		
+		JButton btnViewSongs = new JButton("View Songs");
+		btnViewSongs.setBounds(366, 142, 108, 25);
+		panel.add(btnViewSongs);
+		
+		JLabel lblSongs = new JLabel("Number of Songs ");
+		lblSongs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSongs.setFont(new Font("Corbel", Font.BOLD, 15));
+		lblSongs.setBounds(22, 248, 121, 35);
+		panel.add(lblSongs);
+		
+		JLabel lblAlbumDetails = new JLabel("Album Details");
+		lblAlbumDetails.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAlbumDetails.setBounds(150, 7, 159, 41);
+		panel.add(lblAlbumDetails);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(172, 63, 168, 35);
+		panel.add(scrollPane);
 		
 		JLabel namel = new JLabel("");
-		namel.setBounds(155, 27, 134, 35);
-		panel.add(namel);
-		namel.setForeground(Color.GRAY);
+		scrollPane.setViewportView(namel);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(172, 122, 168, 35);
+		panel.add(scrollPane_1);
 		
 		JLabel artistl = new JLabel("");
-		artistl.setBounds(155, 89, 134, 35);
-		panel.add(artistl);
-		artistl.setForeground(Color.GRAY);
+		scrollPane_1.setViewportView(artistl);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(172, 186, 168, 35);
+		panel.add(scrollPane_2);
 		
 		JLabel releasel = new JLabel("");
-		releasel.setBounds(155, 149, 134, 35);
-		panel.add(releasel);
-		releasel.setForeground(Color.GRAY);
+		scrollPane_2.setViewportView(releasel);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(172, 248, 168, 35);
+		panel.add(scrollPane_3);
+		
+		JLabel songsl = new JLabel("");
+		scrollPane_3.setViewportView(songsl);
 		
 		try {			
 			Class.forName("oracle.jdbc.driver.OracleDriver");					
@@ -115,15 +139,30 @@ public class AlbumbyId extends JFrame {
 				}
 			}
 			
+			rs = stmt.executeQuery("SELECT art_name FROM album,artist where alb_name = '" + s + "' and album.artist_id = artist.artist_id");
+			if (!rs.next()) {										
+				System.out.println("System error");
+			} else {				
+				rs.beforeFirst();
+				while (rs.next()) {	
+					 artistl.setText(rs.getString(1));
+				}
+			}
+			
+			rs = stmt.executeQuery("select count(song_id) from song where album_id = (select album_id from album where alb_name ='" + s + "')");
+			if (!rs.next()) {										
+				System.out.println("System error");
+			} else {				
+				rs.beforeFirst();
+				while (rs.next()) {	
+					 songsl.setText(String.valueOf(rs.getInt(1)));
+				}
+			}
 			con.close();
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
-		}
-		
-		JButton btnViewSongs = new JButton("View Songs");
-		btnViewSongs.setBounds(322, 89, 106, 23);
-		panel.add(btnViewSongs);
+		}	
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
