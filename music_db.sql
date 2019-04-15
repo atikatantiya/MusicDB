@@ -62,3 +62,30 @@ create table purchased_item (
 		on delete cascade
 );
 
+/*
+ delete from purchase;
+ delete from purchased_item;
+ drop sequence purchase_seq;
+ drop sequence pitem_seq;
+ create sequence purchase_seq start with 1;
+ create sequence pitem_seq start with 1;
+ CREATE OR REPLACE TRIGGER purchase_inc 
+ BEFORE INSERT ON purchase
+ FOR EACH ROW
+ BEGIN
+  SELECT purchase_seq.NEXTVAL
+  INTO   :new.purchase_id
+  FROM   dual;
+ END;
+ /
+ CREATE OR REPLACE TRIGGER pitem_inc 
+ BEFORE INSERT ON purchased_item
+ FOR EACH ROW
+ BEGIN
+  SELECT pitem_seq.NEXTVAL
+  INTO   :new.p_id
+  FROM   dual;
+ END;
+ /
+*/
+
