@@ -1,3 +1,11 @@
+/*
+ * delete from artist where art_name like '%''%';
+ *  delete from album where alb_name like '%''%';
+ * delete from song where s_name like '%''%';
+ * delete from song where s_name in (select s_name from (select count(song_id),s_name from song group by s_name having count(song_id)>1));
+ * delete from album where alb_name in (select alb_name from (select count(album_id),alb_name from album group by alb_name having count(album_id)>1));
+ * delete from artist where art_name in (select art_name from (select count(artist_id),art_name from artist group by art_name having count(artist_id)>1));
+*/
 create table users (
 	user_id varchar(5),
 	u_name varchar(20) not null,
@@ -30,7 +38,7 @@ create table album (
 	release_date date not null,	
 	primary key(album_id),
 	foreign key(artist_id) references artist(artist_id)
-		on delete set null
+		on delete cascade
 );
  create table genre (
 	genre_id varchar(5),
@@ -44,9 +52,9 @@ create table song (
 	genre_id varchar(5),
 	s_price number(8,3) check (s_price>0),
 	foreign key(album_id) references album(album_id)
-		on delete set null,
+		on delete cascade,
 	foreign key(genre_id) references genre(genre_id)
-		on delete set null,
+		on delete cascade,
 	primary key(song_id)
 );
 
@@ -57,7 +65,7 @@ create table purchased_item (
 	i_price number(7,3) check(i_price>0),	
 	primary key(p_id),
 	foreign key(song_id) references song(song_id) 
-		on delete set null,
+		on delete cascade,
 	foreign key(purchase_id) references purchase(purchase_id)
 		on delete cascade
 );
