@@ -18,14 +18,14 @@ create table purchase (
 
 create table artist (
 	artist_id varchar(5),
-	art_name varchar(50) not null,
+	art_name varchar(150) not null,
 	bio varchar(200),	
 	primary key(artist_id)
 );
 
 create table album (
 	album_id varchar(5),
-	alb_name varchar(50) not null,
+	alb_name varchar(150) not null,
 	artist_id varchar(5),
 	release_date date not null,	
 	primary key(album_id),
@@ -39,7 +39,7 @@ create table album (
 );
 create table song (
 	song_id varchar(5),
-	s_name varchar(50) not null,
+	s_name varchar(200) not null,
 	album_id varchar(5),
 	genre_id varchar(5),
 	s_price number(8,3) check (s_price>0),
