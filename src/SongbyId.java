@@ -14,7 +14,7 @@ public class SongbyId extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SongbyId frame8 = new SongbyId("song1",1,"null","null",1);
+					SongbyId frame8 = new SongbyId("Breakthru",1,"null","null",1);
 					frame8.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,8 +31,6 @@ public class SongbyId extends JFrame {
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(null);
-		
-		//System.out.println(s);
 
 		JPanel panel = new JPanel();
 		setBounds(450, 150, 500, 420);
@@ -80,31 +78,32 @@ public class SongbyId extends JFrame {
 		scrollPane.setBounds(172, 63, 168, 35);
 		panel.add(scrollPane);
 		
-		JLabel pricel = new JLabel("");
-		scrollPane.setViewportView(pricel);
+		JLabel artl = new JLabel("");
+		scrollPane.setViewportView(artl);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(172, 122, 168, 35);
 		panel.add(scrollPane_1);
 		
-		JLabel genl = new JLabel("");
-		scrollPane_1.setViewportView(genl);
+		JLabel albl = new JLabel("");
+		scrollPane_1.setViewportView(albl);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(172, 186, 168, 35);
 		panel.add(scrollPane_2);
 		
-		JLabel albl = new JLabel("");
-		scrollPane_2.setViewportView(albl);
+		JLabel genl = new JLabel("");
+		scrollPane_2.setViewportView(genl);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
 		scrollPane_3.setBounds(172, 248, 168, 35);
 		panel.add(scrollPane_3);
 		
-		JLabel artl = new JLabel("");
-		scrollPane_3.setViewportView(artl);		
+		JLabel pricel = new JLabel("");
+		scrollPane_3.setViewportView(pricel);		
 		
-		JLabel lblSongDetails = new JLabel("Song Details");
+		JLabel lblSongDetails = new JLabel("");
+		lblSongDetails.setFont(new Font("Corbel", Font.BOLD, 13));
 		lblSongDetails.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSongDetails.setBounds(138, 11, 159, 41);
 		panel.add(lblSongDetails);
@@ -117,6 +116,8 @@ public class SongbyId extends JFrame {
 				    ResultSet.TYPE_SCROLL_INSENSITIVE,
 				    ResultSet.CONCUR_READ_ONLY
 				);
+			
+			lblSongDetails.setText(s);
 
 			ResultSet rs = stmt.executeQuery("SELECT s_price FROM song where s_name = '" + s + "'");
 			

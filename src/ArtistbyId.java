@@ -15,7 +15,7 @@ public class ArtistbyId extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ArtistbyId frame9 = new ArtistbyId("artist1",1);
+					ArtistbyId frame9 = new ArtistbyId("Queen",1);
 					frame9.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

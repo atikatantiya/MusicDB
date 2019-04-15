@@ -15,7 +15,7 @@ public class SongsbyAlbum extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SongsbyAlbum frame14 = new SongsbyAlbum("album1",1,"null",1);
+					SongsbyAlbum frame14 = new SongsbyAlbum("The Miracle",1,"null",1);
 					frame14.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

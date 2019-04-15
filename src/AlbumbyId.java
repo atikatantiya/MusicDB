@@ -14,7 +14,7 @@ public class AlbumbyId extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					 AlbumbyId frame10 = new AlbumbyId("album1",1,"null",1);
+					 AlbumbyId frame10 = new AlbumbyId("The Miracle",1,"null",1);
 						frame10.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

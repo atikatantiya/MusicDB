@@ -1,3 +1,4 @@
+	DELETE FROM genre;
     INSERT INTO genre VALUES(1,'Rock');
     INSERT INTO genre VALUES(2,'Pop');
     INSERT INTO genre VALUES(3,'Folk');

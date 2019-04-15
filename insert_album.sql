@@ -1,3 +1,4 @@
+    DELETE FROM album;
     INSERT INTO album VALUES(1,'Tales of the Crown',16,to_date('09-12-1999', 'DD-MM-YYYY'));
     INSERT INTO album VALUES(2,'The Masquerade Ball',16,to_date('09-06-1999', 'DD-MM-YYYY'));
     INSERT INTO album VALUES(3,'Grace',159,to_date('09-12-1999', 'DD-MM-YYYY'));

@@ -16,7 +16,7 @@ public class SongsbyArtist extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SongsbyArtist frame12 = new SongsbyArtist("artist1",1);
+					SongsbyArtist frame12 = new SongsbyArtist("Queen",1);
 					frame12.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

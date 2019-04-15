@@ -17,7 +17,7 @@ public class GenrebyId extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GenrebyId frame11 = new GenrebyId("genre1",1);
+					GenrebyId frame11 = new GenrebyId("Happy",1);
 					frame11.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

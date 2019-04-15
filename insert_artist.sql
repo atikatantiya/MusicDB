@@ -1,3 +1,4 @@
+delete from artist;
 INSERT INTO artist VALUES ('1','Mahogany Rush','Emerging on to the western musical scene in the 90s, this band is renowned for having a pleasing musical sensibility and powerful, energetic live shows.');
 INSERT INTO artist VALUES('2','Elf','A pop rock artist from USA who burst on into popular music stardom in the 70s.');
 INSERT INTO artist VALUES('3','Mehitabel','A pop rock artist from USA who burst on into popular music stardom in the 70s.');

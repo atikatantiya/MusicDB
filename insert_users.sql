@@ -1,3 +1,4 @@
+DELETE FROM users;
 insert into users values(1,'Atika','atika@gmail.com','atika');
 insert into users values(2,'Siddhant','siddhant@gmail.com','siddhant');
 insert into users values(3,'Akshatha','akshatha@gmail.com','akshatha');

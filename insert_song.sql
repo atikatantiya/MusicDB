@@ -1,3 +1,4 @@
+    DELETE FROM song;
     INSERT INTO song VALUES(1,'I Can''t Quit You Baby',343,2,100);
     INSERT INTO song VALUES(2,'Taking the Easy Way Out Again',311,9,101);
     INSERT INTO song VALUES(3,'Let''s Have A Party',260,6,102);
